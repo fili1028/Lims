@@ -44,7 +44,7 @@ namespace ConsoleApp1
                         switch(SwitchSelection)
                         {
                             case "1":
-                                mS.EnterData
+                                mS.EnterDataForATAC();
                                 break;
                         }
 
