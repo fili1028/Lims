@@ -13,5 +13,20 @@ namespace ConsoleApp1
 
         }
 
+        public void EnterDataForCHIP()
+        {
+
+        }
+
+        public void EnterDataForRNA()
+        {
+
+        }
+
+        public void EnterDataForHI()
+        {
+
+        }
+
     }
 }
