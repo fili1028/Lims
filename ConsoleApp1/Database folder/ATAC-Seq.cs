@@ -8,5 +8,6 @@ namespace ConsoleApp1.Database
 {
     class ATAC_Seq
     {
+
     }
 }
