@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Program
+    class Controller
     {
-        static void Main(string[] args)
+        public void OpenMenu()
         {
-            Controller c = new Controller();
-            c.OpenMenu();
+            Menu m = new Menu();
+            m.ConsoleMenu();
         }
     }
 }

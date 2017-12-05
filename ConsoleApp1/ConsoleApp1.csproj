@@ -42,6 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller.cs" />
+    <Compile Include="Database folder\ATAC-Seq.cs" />
+    <Compile Include="Database folder\ChIP-Seq.cs" />
+    <Compile Include="Database folder\Database.cs" />
+    <Compile Include="DatabaseRepository.cs" />
+    <Compile Include="Database folder\Hi-C.cs" />
+    <Compile Include="Database folder\RNA-Seq.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="MenuSelection.cs" />
     <Compile Include="Program.cs" />
