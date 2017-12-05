@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Program
+    class DatabaseRepository
     {
-        static void Main(string[] args)
-        {
-            Controller c = new Controller();
-            c.OpenMenu();
-        }
     }
 }
