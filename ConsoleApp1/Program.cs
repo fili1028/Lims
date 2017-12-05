@@ -10,8 +10,11 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Controller c = new Controller();
-            c.OpenMenu();
+           Controller c = new Controller();
+           c.OpenMenu();
+           test
+           
+        
         }
     }
 }

@@ -11,9 +11,11 @@ namespace ConsoleApp1
 {
     class DatabaseRepository
     {
-        private static string connectionString = "Server=ealdb1.eal.local; Database= DB2017_C08; User Id= USER_C08; Password=SesamLukOp_08;";
+        private static string connectionString =
+                "Server=EALSQL1.eal.local; Database= DB2017_C08; User Id=USER_C08; Password=SesamLukOp_08";
 
-        private void GetSampleByID(int SampleID)
+
+        public void GetSampleByID(int SampleID)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -23,7 +25,7 @@ namespace ConsoleApp1
                     SqlCommand cmd1 = new SqlCommand("spGetSampleByID", con);
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@Sample_ID", SampleID));
-                    cmd1.ExecuteNonQuery();
+                
 
                     SqlDataReader reader = cmd1.ExecuteReader();
 
@@ -31,8 +33,8 @@ namespace ConsoleApp1
                     {
                         while (reader.Read())
                         {
-                            string SampleType = reader["SampleType"].ToString(); ;
-                            string GenomeType = reader["GenomeType"].ToString();
+                            string SampleType = reader["Sample_Type"].ToString(); 
+                            string GenomeType = reader["Genome_Type"].ToString();
                             Console.WriteLine("Sample Type is = " + SampleType + "Genome type is = " + GenomeType);
 
                         }
@@ -40,7 +42,7 @@ namespace ConsoleApp1
                 }
                 catch (SqlException e)
                 {
-                    Console.WriteLine("UPS" + e.Message);
+                    Console.WriteLine(e.Message);
                 }
 
             }
