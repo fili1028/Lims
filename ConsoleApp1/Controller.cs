@@ -13,5 +13,24 @@ namespace ConsoleApp1
             Menu m = new Menu();
             m.ConsoleMenu();
         }
+        public void EnterDataForATAC()
+        {
+            Console.WriteLine("HELLO");
+        }
+
+        public void EnterDataForCHIP()
+        {
+
+        }
+
+        public void EnterDataForRNA()
+        {
+
+        }
+
+        public void EnterDataForHI()
+        {
+
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace ConsoleApp1
         }
         private void MenuSelection()
         {
-            MenuSelection mS = new MenuSelection();
+            Controller c = new Controller();
             bool running = true;
             while(running)
             {
@@ -41,10 +41,19 @@ namespace ConsoleApp1
                         Console.WriteLine("4. RNA");
                         string userinput = Console.ReadLine();
                         break;
-                        switch(SwitchSelection)
+                        switch(SwitchSelection) //
                         {
                             case "1":
-                                mS.EnterDataForATAC();
+                                c.EnterDataForATAC();
+                                break;
+                            case "2":
+                                c.EnterDataForCHIP();
+                                break;
+                            case "3":
+                                c.EnterDataForHI();
+                                break;
+                            case "4":
+                                c.EnterDataForRNA();
                                 break;
                         }
 
