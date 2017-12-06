@@ -12,9 +12,6 @@ namespace ConsoleApp1
         {
            Controller c = new Controller();
            c.OpenMenu(1);
-           
-           
-        
         }
     }
 }

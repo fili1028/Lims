@@ -12,14 +12,14 @@ namespace ConsoleApp1
 
         public void OpenMenu(int menuLocation) //1 == ConsoleMenu || 2 == Select more data by ID(make method) ||kg
         {
+            Menu m = new Menu();
             switch (menuLocation)
             {
                 case 1:
-                    Menu m = new Menu();
                     m.ConsoleMenu();
                 break;
                 case 2:
-
+                    m.GetSampleByID();
                 break;
             }
             
@@ -48,6 +48,8 @@ namespace ConsoleApp1
         {
             Console.Clear();
             db.GetSampleByID(sampleID);
+            Console.ReadKey();
+            OpenMenu(2);
             
         }
     }

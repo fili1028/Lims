@@ -8,8 +8,11 @@ namespace ConsoleApp1
 {
      class Menu
     {
+        Controller c = new Controller();
+
         public void ConsoleMenu()
         {
+            Console.Clear();
             Console.WriteLine(@".____    .___   _____    _________");
             Console.WriteLine(@"|    |   |   | /     \  /   _____/");
             Console.WriteLine(@"|    |   |   |/  \ /  \ \_____  \ ");
@@ -17,31 +20,31 @@ namespace ConsoleApp1
             Console.WriteLine(@"|_______ \___\____|__  /_______  /");
             Console.WriteLine(@"        \/           \/        \/ ");
             Console.WriteLine("Welcome to the Laboratory Information Management System");
-            Console.WriteLine("Press 1 to enter data for a new sample.");
-            Console.WriteLine("Press 2 to get sample data.");
-            Console.WriteLine("Press 3 to edit data for an existing sample.");
-            Console.WriteLine("Press 0 to exit the application.");
-            Console.Write("Please choose an action: ");
+            Console.WriteLine("1. Enter data for a new sample.");
+            Console.WriteLine("2. Get sample data.");
+            Console.WriteLine("3. Edit data for an existing sample.");
+            Console.WriteLine("0. Exit the application.");
+            Console.Write("\nSelection: ");
             MenuSelection();
         }
         private void MenuSelection()
         {
-            Controller c = new Controller();
             bool running = true;
             while(running)
             {
                 switch(GetUserInput())
                 {
                     case 1:
-                        Console.WriteLine("You have chosen to enter data for a new sample.");
-                        Console.WriteLine("Please choose the sample type: ");
+                        Console.Clear();
+                        Console.WriteLine("You have chosen to enter data for a new sample.\n");
                         Console.WriteLine("1. ATAC-SEC");
                         Console.WriteLine("2. ChIP");
                         Console.WriteLine("3. Hi-C");
                         Console.WriteLine("4. RNA");
                         Console.WriteLine("0. Back to menu");
+                        Console.Write("\nSelection: ");
 
-                        switch(GetUserInput()) 
+                        switch (GetUserInput()) 
                         {
                             case 1:
                                 c.EnterDataForATAC();
@@ -63,9 +66,8 @@ namespace ConsoleApp1
                         break;
 
                     case 2:
-                        Console.WriteLine("You have chosen to search for a sample by ID");
-                        Console.Write("Please enter the ID sample ID: ");
-                        c.GetSampleByID(GetUserInput());
+                        Console.Clear();//rather here than in the method, if user wants to retrieve more than 1 and keep the earlier samples in the window
+                        GetSampleByID();
                         break;
 
                     case 0:
@@ -73,7 +75,7 @@ namespace ConsoleApp1
                         break;
 
                     default:
-                        Console.WriteLine("Could not find command. Press any button to return to menu");
+                        Console.WriteLine("Command not found. Press any key");
                         Console.ReadKey();
                         Console.Clear();
                         ConsoleMenu();
@@ -84,27 +86,42 @@ namespace ConsoleApp1
             }
         }
 
+        public void GetSampleByID()
+        {
+            Console.WriteLine("1. Search sample by ID\n0. Back to menu");
+            Console.Write("\nSelection: ");
+            int userSelection = GetUserInput();
+            if(userSelection == 0)
+            {
+                ConsoleMenu();
+            }
+            else
+            {
+                Console.Write("Enter sample ID: ");
+                c.GetSampleByID(GetUserInput());
+            }
+        }
+
         private int GetUserInput()
         {
-            string sInput = string.Empty;
-            int iInput = 0;
             bool invalidSelection = true;
-
-            sInput = Console.ReadLine();
+            int iInput = 0;
             while (invalidSelection)
             {
-                if (!Int32.TryParse(sInput, out iInput))
+                string sInput = string.Empty;
+                sInput = Console.ReadLine();
+                bool validSelection = Int32.TryParse(sInput, out iInput);
+                if (validSelection)
                 {
-                    Console.WriteLine("Selection is not valid.");
-                    GetUserInput();
+                    invalidSelection = false;
+                    iInput = Int32.Parse(sInput);
                 }
                 else
                 {
-                    iInput = Int32.Parse(sInput);
-                    invalidSelection = false;
+                    Console.WriteLine("Selection is not valid.");
                 }
             }
-            return iInput;   
+            return iInput;
         }
     }
 }
