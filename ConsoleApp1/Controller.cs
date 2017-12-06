@@ -8,14 +8,25 @@ namespace ConsoleApp1
 {
     class Controller
     {
-        public void OpenMenu()
+        DatabaseRepository db = new DatabaseRepository();
+
+        public void OpenMenu(int menuLocation) //1 == ConsoleMenu || 2 == Select more data by ID(make method) ||kg
         {
-            Menu m = new Menu();
-            m.ConsoleMenu();
+            switch (menuLocation)
+            {
+                case 1:
+                    Menu m = new Menu();
+                    m.ConsoleMenu();
+                break;
+                case 2:
+
+                break;
+            }
+            
         }
         public void EnterDataForATAC()
         {
-            Console.WriteLine("HELLO");
+            
         }
 
         public void EnterDataForCHIP()
@@ -31,6 +42,13 @@ namespace ConsoleApp1
         public void EnterDataForHI()
         {
 
+        }
+
+        public void GetSampleByID(int sampleID)
+        {
+            Console.Clear();
+            db.GetSampleByID(sampleID);
+            
         }
     }
 }

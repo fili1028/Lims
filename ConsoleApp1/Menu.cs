@@ -18,8 +18,9 @@ namespace ConsoleApp1
             Console.WriteLine(@"        \/           \/        \/ ");
             Console.WriteLine("Welcome to the Laboratory Information Management System");
             Console.WriteLine("Press 1 to enter data for a new sample.");
-            Console.WriteLine("Press 2 to get data for samples.");
+            Console.WriteLine("Press 2 to get sample data.");
             Console.WriteLine("Press 3 to edit data for an existing sample.");
+            Console.WriteLine("Press 0 to exit the application.");
             Console.Write("Please choose an action: ");
             MenuSelection();
         }
@@ -29,42 +30,47 @@ namespace ConsoleApp1
             bool running = true;
             while(running)
             {
-                string SwitchSelection = Console.ReadLine();
-                switch(SwitchSelection)
+                switch(GetUserInput())
                 {
-                    case "1":
+                    case 1:
                         Console.WriteLine("You have chosen to enter data for a new sample.");
                         Console.WriteLine("Please choose the sample type: ");
                         Console.WriteLine("1. ATAC-SEC");
                         Console.WriteLine("2. ChIP");
                         Console.WriteLine("3. Hi-C");
                         Console.WriteLine("4. RNA");
-                        string userinput = Console.ReadLine();
-                        break;
-                        switch(SwitchSelection) //
+                        Console.WriteLine("0. Back to menu");
+
+                        switch(GetUserInput()) 
                         {
-                            case "1":
+                            case 1:
                                 c.EnterDataForATAC();
                                 break;
-                            case "2":
+                            case 2:
                                 c.EnterDataForCHIP();
                                 break;
-                            case "3":
+                            case 3:
                                 c.EnterDataForHI();
                                 break;
-                            case "4":
+                            case 4:
                                 c.EnterDataForRNA();
                                 break;
+                            case 0:
+                                Console.Clear();
+                                ConsoleMenu();
+                                break;
                         }
-
-                    case "2":
-                        Console.WriteLine("You have chosen to search for a sample by its ID");
-                        Console.WriteLine("Please enter the ID of the sample");
-                        int ID = Convert.ToInt32(Console.ReadLine());
-                        DatabaseRepository db = new DatabaseRepository();
-                        db.GetSampleByID(ID);
                         break;
 
+                    case 2:
+                        Console.WriteLine("You have chosen to search for a sample by ID");
+                        Console.Write("Please enter the ID sample ID: ");
+                        c.GetSampleByID(GetUserInput());
+                        break;
+
+                    case 0:
+                        Environment.Exit(0);
+                        break;
 
                     default:
                         Console.WriteLine("Could not find command. Press any button to return to menu");
@@ -78,7 +84,27 @@ namespace ConsoleApp1
             }
         }
 
+        private int GetUserInput()
+        {
+            string sInput = string.Empty;
+            int iInput = 0;
+            bool invalidSelection = true;
 
-
+            sInput = Console.ReadLine();
+            while (invalidSelection)
+            {
+                if (!Int32.TryParse(sInput, out iInput))
+                {
+                    Console.WriteLine("Selection is not valid.");
+                    GetUserInput();
+                }
+                else
+                {
+                    iInput = Int32.Parse(sInput);
+                    invalidSelection = false;
+                }
+            }
+            return iInput;   
+        }
     }
 }
