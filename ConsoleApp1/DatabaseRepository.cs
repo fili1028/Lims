@@ -64,14 +64,14 @@ namespace ConsoleApp1
                                 Console.WriteLine("PCR cycles count of sample " + SampleID + " is : " + PCRCycles);
                                 
                             }
-                            if (SampleType == "Hi-C")
+                            else if (SampleType == "HI-C")
                             {
                                 string RestrictionEnzyme = reader["Restriction_Enzyme"].ToString();
                                 string PCRCycles = reader["PCR_Cycles"].ToString();
                                 Console.WriteLine("Restriction enzyme count of sample " + SampleID + " is: " + RestrictionEnzyme);
                                 Console.WriteLine("PCR Cycle count of sample " + SampleID + " is: " + PCRCycles);
                             }
-                            if (SampleType == "RNA-Seq")
+                           else  if (SampleType == "RNA-Seq")
                             {
                                 string PrepType = reader["Prep_Type"].ToString();
                                 string RIN = reader["RIN"].ToString();
@@ -79,7 +79,15 @@ namespace ConsoleApp1
                                 Console.WriteLine("The RIN of the sample " + SampleID + " is: " + RIN);
                             }
 
-                          //  if (SampleType == "ChIP-Seq")
+                          else if (SampleType == "ChIP-Seq")
+                            {
+                                string Antibody = reader["Antibody"].ToString();
+                                string AntibodyLot = reader["Antibody_Lot"].ToString();
+                                string AntibodyCatalogueNumber = reader["Antibody_Catalogue_Number"].ToString();
+                                Console.WriteLine("The antibody of the sample " + SampleID + " is: " + Antibody);
+                                Console.WriteLine("The antibody lot of the sample " + SampleID + " is: " + AntibodyLot);
+                                Console.WriteLine("The anti body catalogue number of the sample " + SampleID + " is: " + AntibodyCatalogueNumber);
+                            }
                          
                         }
                     }
