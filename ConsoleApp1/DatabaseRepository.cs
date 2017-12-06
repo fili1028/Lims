@@ -35,8 +35,38 @@ namespace ConsoleApp1
                         {
                             string SampleType = reader["Sample_Type"].ToString(); 
                             string GenomeType = reader["Genome_Type"].ToString();
-                            Console.WriteLine("Sample Type is = " + SampleType + "Genome type is = " + GenomeType);
-
+                            string Treatment = reader["Treatment"].ToString();
+                            string Condition = reader["Condition"].ToString();
+                            string Comments = reader["Comments"].ToString();
+                            string Concentration = reader["Concentration"].ToString();
+                            string Volume = reader["Volume"].ToString();
+                            string Initials = reader["Initials"].ToString();
+                            string PiValue = reader["Pi_Value"].ToString();
+                            string DateOfAddition = reader["Date_Of_Addition"].ToString();
+                            Console.WriteLine("SAMPLE ID: " + SampleID);
+                            Console.WriteLine("Sample Type of " + SampleID + " is " + SampleType);
+                            Console.WriteLine("Genome type is" + GenomeType);
+                            Console.WriteLine("Treatment of sample " + SampleID + " is:" + Treatment);
+                            Console.WriteLine("Condition of the sample " + SampleID + " is: " + Condition);
+                            Console.WriteLine("Comments for sample " + SampleID + " is: ");
+                            Console.WriteLine("Concentration of sample " + SampleID + " is: ");
+                            Console.WriteLine("Volume of sample " + SampleID + " is: " + Volume);
+                            Console.WriteLine("Initials of sample " + SampleID + " is: " + Initials);
+                            Console.WriteLine("PI of sample " + SampleID + " is: " + PiValue );
+                            Console.WriteLine("Date of addition for sample " + SampleID + " is: " + DateOfAddition);
+                            
+                            if (SampleType == "Atac_Sec")
+                            {
+                                string TransposaseUnit = reader["Transposase_Unit"].ToString();
+                                string PCRCycles = reader["PCR_Cycles"].ToString();
+                                Console.WriteLine("Transposase unit count of sample " + SampleID + " is: " + TransposaseUnit);
+                                Console.WriteLine("PCR cycles count of sample " + SampleID + "is : " + PCRCycles);
+                                
+                            }
+                            if (SampleID == null)
+                            {
+                                Console.WriteLine("Sample not found.");
+                            }
                         }
                     }
                 }

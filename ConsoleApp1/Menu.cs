@@ -57,6 +57,15 @@ namespace ConsoleApp1
                                 break;
                         }
 
+                    case "2":
+                        Console.WriteLine("You have chosen to search for a sample by its ID");
+                        Console.WriteLine("Please enter the ID of the sample");
+                        int ID = Convert.ToInt32(Console.ReadLine());
+                        DatabaseRepository db = new DatabaseRepository();
+                        db.GetSampleByID(ID);
+                        break;
+
+
                     default:
                         Console.WriteLine("Could not find command. Press any button to return to menu");
                         Console.ReadKey();
