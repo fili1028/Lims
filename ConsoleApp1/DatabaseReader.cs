@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace ConsoleApp1
 {
-    class DatabaseRepository
+    class DatabaseReader
     {
         private static string connectionString =
                 "Server=EALSQL1.eal.local; Database= DB2017_C08; User Id=USER_C08; Password=SesamLukOp_08";
@@ -25,7 +25,8 @@ namespace ConsoleApp1
                     SqlCommand cmd1 = new SqlCommand("spGetSampleByID", con);
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@Sample_ID", SampleID));
-                
+                    
+                   
 
                     SqlDataReader reader = cmd1.ExecuteReader();
 
@@ -96,6 +97,7 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine(e.Message);
                 }
+               
 
             }
 

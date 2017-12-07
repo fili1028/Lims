@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class ATAC_Seq : DatabaseAttribute
+    class ATAC_Seq
     {
-
+        public double TransposaseUnit { get; set; }
+        public double PCRCycles { get; set; }
     }
 }

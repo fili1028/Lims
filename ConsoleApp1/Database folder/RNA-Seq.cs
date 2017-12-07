@@ -8,5 +8,7 @@ namespace ConsoleApp1
 {
     class RNA_Seq : DatabaseAttribute
     {
+        public string PrepType { get; set; }
+        public string RIN { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class ChIP_Seq : DatabaseAttribute
+    class ChIP_Seq
     {
         public string Antibody { get; set; }
         public string AtibodyLot { get; set; }
