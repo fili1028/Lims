@@ -76,7 +76,7 @@ namespace ConsoleApp1
                     bool inappropriateInput = true;
                     while (inappropriateInput)
                     {
-                        Console.Write("Submit? Y/N: ");
+                        Console.Write("\nSubmit? Y/N: ");
                         ConsoleKeyInfo submitCheck = Console.ReadKey();
                         if (submitCheck.KeyChar == 'Y' || submitCheck.KeyChar == 'y')
                         {
@@ -89,6 +89,10 @@ namespace ConsoleApp1
                             con.Close(); //needed ?
                             Controller c = new Controller();
                             c.OpenMenu(1);
+                        }
+                        else
+                        {
+                            Console.Write("  -  \"" + submitCheck.KeyChar.ToString() + "\" is not valid input!");
                         }
                     }
 
