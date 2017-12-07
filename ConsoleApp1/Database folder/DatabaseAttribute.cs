@@ -8,7 +8,7 @@ namespace ConsoleApp1
 {
     class DatabaseAttribute
     {
-        ATAC_Seq at = new ATAC_Seq();
+       
         public string SampleType { get; set; } 
         public string GenomeType { get; set; }
         public string Treatment { get; set; }
@@ -30,8 +30,8 @@ namespace ConsoleApp1
         public double HIRestrictionEnzyme { get; set; }
         public double HIPCRCycles { get; set; }
         //RNA-Seq
-        public string PrepType { get; set; }
-        public string RIN { get; set; }
+        public string RNAPrepType { get; set; }
+        public string RNARIN { get; set; }
 
 
 

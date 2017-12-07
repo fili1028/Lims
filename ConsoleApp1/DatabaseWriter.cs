@@ -26,10 +26,19 @@ namespace ConsoleApp1
                     {
                         cmd1 = new SqlCommand("spAddSample_ATAC_Seq", con);
                     }
-                    if (da.SampleType == "ChIP-Seq")
+                    else if (da.SampleType == "ChIP-Seq")
                     {
-                       cmd1 = new SqlCommand("spAddSample_ATAC_Seq", con);
+                       cmd1 = new SqlCommand("spAddSample_ChIP_Seq", con);
                     }
+                   else if (da.SampleType == "Hi-C")
+                    {
+                        cmd1 = new SqlCommand("spAddSample_Hi_C", con);
+                    }
+                    if (da.SampleType == "RNA-Seq")
+                    {
+                        cmd1 = new SqlCommand("spAddSample_RNA_Seq", con);
+                    }
+
 
 
                     cmd1.CommandType = CommandType.StoredProcedure;
@@ -49,8 +58,23 @@ namespace ConsoleApp1
                         cmd1.Parameters.Add(new SqlParameter("@Transposase_Unit", da.ATACTransposaseUnit));
                         cmd1.Parameters.Add(new SqlParameter("@PCR_Cycles", da.ATACPCRCycles));
                     }
-
-                    cmd1.ExecuteNonQuery();
+                    else if (da.SampleType == "ChIP-Seq")
+                    {
+                        cmd1.Parameters.Add(new SqlParameter("@Antibody", da.ChIPAntibody));
+                        cmd1.Parameters.Add(new SqlParameter("@Antibody_Lot", da.ChIPAtibodyLot));
+                        cmd1.Parameters.Add(new SqlParameter("@Antibody_Catalogue_Number", da.ChIPAntibodyCatalogueNumber));
+                    }
+                    else if (da.SampleType == "Hi-C")
+                    {
+                        cmd1.Parameters.Add(new SqlParameter("@Restriction_Enzyme", da.HIRestrictionEnzyme));
+                        cmd1.Parameters.Add(new SqlParameter("@PCR_Cycles", da.HIPCRCycles));
+                    }
+                   else if (da.SampleType == "RNA-Seq")
+                    {
+                        cmd1.Parameters.Add(new SqlParameter("@Prep_Type", da.RNAPrepType));
+                        cmd1.Parameters.Add(new SqlParameter("@RIN", da.RNARIN));
+                    }
+                        cmd1.ExecuteNonQuery();
                     //cmd1.ExecuteNonQuery();
 
                 }
@@ -63,9 +87,6 @@ namespace ConsoleApp1
                 }
             }
         
-        public void InsertATAC(DataEntry da)
-        {
-
-        }
+        
     }
 }

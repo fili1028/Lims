@@ -27,22 +27,26 @@ namespace ConsoleApp1
         }
         public void EnterDataForATAC()
         {
-            de.EnterCommonData("ATAC-Seq");  
+            de.EnterCommonData("ATAC-Seq");
+            OpenMenu(1);
         }
 
         public void EnterDataForCHIP()
         {
             de.EnterCommonData("ChIP-Seq");
+            OpenMenu(1);
         }
 
         public void EnterDataForRNA()
         {
             de.EnterCommonData("RNA-Seq");
+            OpenMenu(1);
         }
 
         public void EnterDataForHI()
         {
             de.EnterCommonData("Hi-C");
+            OpenMenu(1);
         }
 
         public void GetSampleByID(int sampleID)

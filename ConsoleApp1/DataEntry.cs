@@ -52,7 +52,7 @@ namespace ConsoleApp1
 
         }
 
-        public void EnterDataForATAC(DatabaseAttribute da)
+        public void EnterDataForATAC(DatabaseAttribute da) //Refactor
         {
 
             DatabaseWriter dw = new DatabaseWriter();
@@ -64,24 +64,38 @@ namespace ConsoleApp1
             
         }
 
-        public void EnterDataForCHIP(DatabaseAttribute da)
+        public void EnterDataForCHIP(DatabaseAttribute da) //Refactor
         {
-
+            DatabaseWriter dw = new DatabaseWriter();
+            Console.WriteLine("Please enter the Antibody: ");
+            da.ChIPAntibody = Console.ReadLine();
+            Console.WriteLine("Please enter the Antibody Lot: ");
+            da.ChIPAtibodyLot = Console.ReadLine();
+            Console.WriteLine("Please enter the Antibody Catalouge Number: ");
+            da.ChIPAntibodyCatalogueNumber = Console.ReadLine();
+            dw.InsertCommon(da);
         }
 
-        public void EnterDataForRNA(DatabaseAttribute da)
+        public void EnterDataForRNA(DatabaseAttribute da) //Refactor
+        {                                                 //Refactor
+            DatabaseWriter dw = new DatabaseWriter();
+            Console.WriteLine("Please enter the prep type: ");
+            da.RNAPrepType = Console.ReadLine();
+            Console.WriteLine("Please enter the RIN: ");
+            da.RNARIN = Console.ReadLine();
+            dw.InsertCommon(da);
+        }                                                 //Refactor
+                                                          //Refactor
+        public void EnterDataForHI(DatabaseAttribute da)  //Refactor
         {
-
+            DatabaseWriter dw = new DatabaseWriter();
+            Console.WriteLine("Please enter the Restriction Enzyme: ");
+            da.HIRestrictionEnzyme = GetUserInputDouble();
+            Console.WriteLine("Please enter the PCR Cycles");
+            da.HIPCRCycles = GetUserInputDouble();
+            dw.InsertCommon(da);
         }
-
-        public void EnterDataForHI(DatabaseAttribute da)
-        {
-
-        }
-        public DatabaseAttribute ReturnSample (DatabaseAttribute da)
-        {
-            return da;
-        }
+       
         private double GetUserInputDouble()
         {
             bool invalidSelection = true;
