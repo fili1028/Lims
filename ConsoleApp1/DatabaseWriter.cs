@@ -16,7 +16,7 @@ namespace ConsoleApp1
         public void InsertCommon(DatabaseAttribute da)
         
             {
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlConnection con = new SqlConnection(connectionString)) //will we need to close the connection manully if we exit the connection without execution the query??
                 {
                     try
                     {
@@ -38,8 +38,6 @@ namespace ConsoleApp1
                     {
                         cmd1 = new SqlCommand("spAddSample_RNA_Seq", con);
                     }
-
-
 
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@Sample_Type", da.SampleType));
@@ -74,13 +72,29 @@ namespace ConsoleApp1
                         cmd1.Parameters.Add(new SqlParameter("@Prep_Type", da.RNAPrepType));
                         cmd1.Parameters.Add(new SqlParameter("@RIN", da.RNARIN));
                     }
-                        cmd1.ExecuteNonQuery();
-                    //cmd1.ExecuteNonQuery();
+
+                    bool inappropriateInput = true;
+                    while (inappropriateInput)
+                    {
+                        Console.Write("Submit? Y/N: ");
+                        ConsoleKeyInfo submitCheck = Console.ReadKey();
+                        if (submitCheck.KeyChar == 'Y' || submitCheck.KeyChar == 'y')
+                        {
+                            inappropriateInput = false;
+                            cmd1.ExecuteNonQuery();
+                        }
+                        else if (submitCheck.KeyChar == 'N' || submitCheck.KeyChar == 'n')
+                        {
+                            inappropriateInput = false;
+                            con.Close(); //needed ?
+                            Controller c = new Controller();
+                            c.OpenMenu(1);
+                        }
+                    }
 
                 }
                     catch (SqlException e)
                     {
-
                         Console.WriteLine(e);
                     }
 
