@@ -45,15 +45,19 @@ namespace ConsoleApp1
                         switch (GetUserInput()) 
                         {
                             case 1:
+                                Console.Clear();
                                 c.EnterDataForATAC();
                                 break;
                             case 2:
+                                Console.Clear();
                                 c.EnterDataForCHIP();
                                 break;
                             case 3:
+                                Console.Clear();
                                 c.EnterDataForHI();
                                 break;
                             case 4:
+                                Console.Clear();
                                 c.EnterDataForRNA();
                                 break;
                             case 0:
