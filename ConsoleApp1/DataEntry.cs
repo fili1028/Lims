@@ -20,6 +20,8 @@ namespace ConsoleApp1
             da.Treatment = Console.ReadLine();
             Console.WriteLine("Please enter the condition: ");
             da.Condition = Console.ReadLine();
+            Console.WriteLine("Please add comments: ");
+            da.Comments = Console.ReadLine();
             Console.WriteLine("Please enter the concentration: ");
             da.Concentration = GetUserInputDouble();
             Console.WriteLine("Please enter the volume: ");
@@ -53,10 +55,12 @@ namespace ConsoleApp1
         public void EnterDataForATAC(DatabaseAttribute da)
         {
 
+            DatabaseWriter dw = new DatabaseWriter();
             Console.WriteLine("Please enter the count of transposase units: ");
             da.ATACTransposaseUnit = GetUserInputDouble();
             Console.WriteLine("Please enter the count of PCR Cycles: ");
             da.ATACPCRCycles = GetUserInputDouble();
+            dw.InsertCommon(da);
             
         }
 
@@ -73,6 +77,10 @@ namespace ConsoleApp1
         public void EnterDataForHI(DatabaseAttribute da)
         {
 
+        }
+        public DatabaseAttribute ReturnSample (DatabaseAttribute da)
+        {
+            return da;
         }
         private double GetUserInputDouble()
         {

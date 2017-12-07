@@ -9,7 +9,7 @@ namespace ConsoleApp1
     class Controller
     {
         DatabaseReader db = new DatabaseReader();
-        DataEntry dw = new DataEntry();
+        DataEntry de = new DataEntry();
 
         public void OpenMenu(int menuLocation) //1 == ConsoleMenu || 2 == Select more data by ID(make method) ||kg
         {
@@ -27,22 +27,22 @@ namespace ConsoleApp1
         }
         public void EnterDataForATAC()
         {
-            dw.EnterCommonData("ATAC-Seq");  
+            de.EnterCommonData("ATAC-Seq");  
         }
 
         public void EnterDataForCHIP()
         {
-            dw.EnterCommonData("ChIP-Seq");
+            de.EnterCommonData("ChIP-Seq");
         }
 
         public void EnterDataForRNA()
         {
-            dw.EnterCommonData("RNA-Seq");
+            de.EnterCommonData("RNA-Seq");
         }
 
         public void EnterDataForHI()
         {
-            dw.EnterCommonData("Hi-C");
+            de.EnterCommonData("Hi-C");
         }
 
         public void GetSampleByID(int sampleID)
