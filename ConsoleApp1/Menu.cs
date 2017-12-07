@@ -24,7 +24,6 @@ namespace ConsoleApp1
             Console.WriteLine("2. Get sample data.");
             Console.WriteLine("3. Edit data for an existing sample.");
             Console.WriteLine("0. Exit the application.");
-            Console.Write("\nSelection: ");
             MenuSelection();
         }
         private void MenuSelection()
@@ -42,7 +41,6 @@ namespace ConsoleApp1
                         Console.WriteLine("3. Hi-C");
                         Console.WriteLine("4. RNA");
                         Console.WriteLine("0. Back to menu");
-                        Console.Write("\nSelection: ");
 
                         switch (GetUserInput()) 
                         {
@@ -88,18 +86,17 @@ namespace ConsoleApp1
 
         public void GetSampleByID()
         {
-            Console.WriteLine("1. Search sample by ID\n0. Back to menu");
-            Console.Write("\nSelection: ");
+            Console.WriteLine("\nSearch for sample by ID\n0. Back to menu");
             int userSelection = GetUserInput();
-            if(userSelection == 0)
+            if (userSelection == 0)
             {
                 ConsoleMenu();
             }
             else
             {
-                Console.Write("Enter sample ID: ");
-                c.GetSampleByID(GetUserInput());
+                c.GetSampleByID(userSelection);
             }
+            
         }
 
         private int GetUserInput()
@@ -108,6 +105,7 @@ namespace ConsoleApp1
             int iInput = 0;
             while (invalidSelection)
             {
+                Console.Write("\nSelection: ");
                 string sInput = string.Empty;
                 sInput = Console.ReadLine();
                 bool validSelection = Int32.TryParse(sInput, out iInput);
