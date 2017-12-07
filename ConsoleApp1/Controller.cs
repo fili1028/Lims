@@ -27,8 +27,7 @@ namespace ConsoleApp1
         }
         public void EnterDataForATAC()
         {
-            RNA_Seq rna = new RNA_Seq();
-            rna.
+
         }
 
         public void EnterDataForCHIP()
@@ -39,6 +38,7 @@ namespace ConsoleApp1
         public void EnterDataForRNA()
         {
 
+            
         }
 
         public void EnterDataForHI()
