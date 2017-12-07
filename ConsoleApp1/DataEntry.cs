@@ -14,23 +14,23 @@ namespace ConsoleApp1
             da.SampleType = SampleType;
             Console.WriteLine("Sample type: " + da.SampleType);
             
-            Console.WriteLine("Please enter the genome type: ");
+            Console.Write("Genome type: ");
             da.GenomeType = Console.ReadLine();
-            Console.WriteLine("Please enter the treatment: ");
+            Console.Write("Treatment: ");
             da.Treatment = Console.ReadLine();
-            Console.WriteLine("Please enter the condition: ");
+            Console.Write("Condition: ");
             da.Condition = Console.ReadLine();
-            Console.WriteLine("Please add comments: ");
+            Console.Write("Comments: ");
             da.Comments = Console.ReadLine();
-            Console.WriteLine("Please enter the concentration: ");
+            Console.Write("Concentration: ");
             da.Concentration = GetUserInputDouble();
-            Console.WriteLine("Please enter the volume: ");
+            Console.Write("Volume: ");
             da.Volume = GetUserInputDouble();
-            Console.WriteLine("Please enter the initials: ");
+            Console.Write("Initials: ");
             da.Initials = Console.ReadLine();
-            Console.WriteLine("Please enter the PI of the sample: ");
+            Console.Write("PI: ");
             da.PIValue = Console.ReadLine();
-            Console.WriteLine("Please enter the date of addition for the sample, in the format DD-MM-YYYY: ");
+            Console.Write("Enter the date, the format is DD-MM-YYYY: ");
             da.DateOfAddition = Console.ReadLine();
 
             switch(SampleType)
@@ -56,9 +56,9 @@ namespace ConsoleApp1
         {
 
             DatabaseWriter dw = new DatabaseWriter();
-            Console.WriteLine("Please enter the count of transposase units: ");
+            Console.Write("Transposase units: ");
             da.ATACTransposaseUnit = GetUserInputDouble();
-            Console.WriteLine("Please enter the count of PCR Cycles: ");
+            Console.Write("PCR Cycles: ");
             da.ATACPCRCycles = GetUserInputDouble();
             dw.InsertCommon(da);
             
@@ -67,11 +67,11 @@ namespace ConsoleApp1
         public void EnterDataForCHIP(DatabaseAttribute da) //Refactor
         {
             DatabaseWriter dw = new DatabaseWriter();
-            Console.WriteLine("Please enter the Antibody: ");
+            Console.Write("Antibody: ");
             da.ChIPAntibody = Console.ReadLine();
-            Console.WriteLine("Please enter the Antibody Lot: ");
+            Console.Write("Antibody Lot: ");
             da.ChIPAtibodyLot = Console.ReadLine();
-            Console.WriteLine("Please enter the Antibody Catalouge Number: ");
+            Console.Write("Antibody Catalouge Number: ");
             da.ChIPAntibodyCatalogueNumber = Console.ReadLine();
             dw.InsertCommon(da);
         }
@@ -79,9 +79,9 @@ namespace ConsoleApp1
         public void EnterDataForRNA(DatabaseAttribute da) //Refactor
         {                                                 //Refactor
             DatabaseWriter dw = new DatabaseWriter();
-            Console.WriteLine("Please enter the prep type: ");
+            Console.Write("Prep type: ");
             da.RNAPrepType = Console.ReadLine();
-            Console.WriteLine("Please enter the RIN: ");
+            Console.Write("RIN: ");
             da.RNARIN = Console.ReadLine();
             dw.InsertCommon(da);
         }                                                 //Refactor
@@ -89,9 +89,9 @@ namespace ConsoleApp1
         public void EnterDataForHI(DatabaseAttribute da)  //Refactor
         {
             DatabaseWriter dw = new DatabaseWriter();
-            Console.WriteLine("Please enter the Restriction Enzyme: ");
+            Console.Write("Restriction Enzyme: ");
             da.HIRestrictionEnzyme = GetUserInputDouble();
-            Console.WriteLine("Please enter the PCR Cycles");
+            Console.Write("PCR Cycles");
             da.HIPCRCycles = GetUserInputDouble();
             dw.InsertCommon(da);
         }
