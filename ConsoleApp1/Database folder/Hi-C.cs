@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1.Database
+namespace ConsoleApp1
 {
-    class Hi_C
+    class Hi_C : DatabaseAttribute
     { 
         public double RestrictionEnzyme { get; set; }
         public double PCRCycles { get; set; }

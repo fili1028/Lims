@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1.Database_folder
+namespace ConsoleApp1
 {
     class DatabaseAttribute
     {
@@ -17,7 +17,8 @@ namespace ConsoleApp1.Database_folder
         public string Initials { get; set; }
         public string PIValue { get; set; }
         public string DateOfAddition { get; set; }
+
         
 
-}
+    }
 }
