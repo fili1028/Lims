@@ -14,7 +14,6 @@ namespace ConsoleApp1
         {
             da.SampleType = SampleType;
             Console.WriteLine("Sample type: " + da.SampleType);
-            
             Console.Write("Genome type: ");
             da.GenomeType = Console.ReadLine();
             Console.Write("Treatment: ");
@@ -39,7 +38,6 @@ namespace ConsoleApp1
                 case "ATAC-Seq":
                     EnterDataForATAC(da);
                     break;
-
                 case "ChIP-Seq":
                     EnterDataForCHIP(da);
                     break;
@@ -93,7 +91,6 @@ namespace ConsoleApp1
                         invalidInput = true;
                         Console.Write("\nPrep type: ");
                         break;
-
                 }
             }
             Console.Write("RIN: ");
