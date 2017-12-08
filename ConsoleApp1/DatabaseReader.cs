@@ -14,7 +14,6 @@ namespace ConsoleApp1
         private static string connectionString =
                 "Server=EALSQL1.eal.local; Database= DB2017_C08; User Id=USER_C08; Password=SesamLukOp_08";
 
-
         public void GetSampleByID(int SampleID)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -25,15 +24,14 @@ namespace ConsoleApp1
                     SqlCommand cmd1 = new SqlCommand("spGetSampleByID", con);
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@Sample_ID", SampleID));
-                    
+
                     SqlDataReader reader = cmd1.ExecuteReader();
 
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
-                           
-                            string SampleType = reader["Sample_Type"].ToString(); 
+                            string SampleType = reader["Sample_Type"].ToString();
                             string GenomeType = reader["Genome_Type"].ToString();
                             string Treatment = reader["Treatment"].ToString();
                             string Condition = reader["Condition"].ToString();
@@ -52,9 +50,9 @@ namespace ConsoleApp1
                             Console.WriteLine("Concentration:      " + Concentration);
                             Console.WriteLine("Volume:             " + Volume);
                             Console.WriteLine("Initials:           " + Initials);
-                            Console.WriteLine("PI:                 " + PiValue );
+                            Console.WriteLine("PI:                 " + PiValue);
                             Console.WriteLine("Date:               " + DateOfAddition);
-                            
+
                             if (SampleType == "ATAC-Seq")
                             {
                                 string TransposaseUnit = reader["Transposase_Unit"].ToString();
@@ -69,7 +67,7 @@ namespace ConsoleApp1
                                 Console.WriteLine("Restriction Enzyme: " + RestrictionEnzyme);
                                 Console.WriteLine("PCR Cycle:          " + PCRCycles);
                             }
-                           else  if (SampleType == "RNA-Seq")
+                            else if (SampleType == "RNA-Seq")
                             {
                                 string PrepType = reader["Prep_Type"].ToString();
                                 string RIN = reader["RIN"].ToString();
@@ -77,7 +75,7 @@ namespace ConsoleApp1
                                 Console.WriteLine("RIN:                " + RIN);
                             }
 
-                          else if (SampleType == "ChIP-Seq")
+                            else if (SampleType == "ChIP-Seq")
                             {
                                 string Antibody = reader["Antibody"].ToString();
                                 string AntibodyLot = reader["Antibody_Lot"].ToString();
@@ -86,7 +84,6 @@ namespace ConsoleApp1
                                 Console.WriteLine("Antibody Lot:       " + AntibodyLot);
                                 Console.WriteLine("Antibody Cat. Nr:   " + AntibodyCatalogueNumber);
                             }
-                         
                         }
                     }
                 }
@@ -94,12 +91,9 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine(e.Message);
                 }
-               
-
             }
-
         }
     }
 }
-    
-    
+
+
