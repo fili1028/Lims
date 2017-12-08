@@ -44,9 +44,9 @@ namespace ConsoleApp1
                             Console.WriteLine("SAMPLE ID:          " + SampleID);
                             Console.WriteLine("Sample Type:        " + SampleType);
                             Console.WriteLine("Genome Type:        " + GenomeType);
-                            Console.WriteLine("Treatment:          " + SampleID + " is:" + Treatment);
+                            Console.WriteLine("Treatment:          " + Treatment);
                             Console.WriteLine("Condition:          " + Condition);
-                            Console.WriteLine("Comments:           " + SampleID + " is: " + Comments);
+                            Console.WriteLine("Comments:           " + Comments);
                             Console.WriteLine("Concentration:      " + Concentration);
                             Console.WriteLine("Volume:             " + Volume);
                             Console.WriteLine("Initials:           " + Initials);
