@@ -79,8 +79,28 @@ namespace ConsoleApp1
         public void EnterDataForRNA(DatabaseAttribute da) //Refactor
         {                                                 //Refactor
             DatabaseWriter dw = new DatabaseWriter();
-            Console.Write("Prep type: ");
-            da.RNAPrepType = Console.ReadLine();
+            Console.WriteLine("Prep type: ");
+            Console.WriteLine("  1.mRNA\n  2.Total RNA");
+            bool invalidInput = true;
+            while (invalidInput)
+            {
+                switch (GetUserInputDouble())
+                {
+                    case 1:
+                        da.RNAPrepType = "mRNA";
+                        invalidInput = false;
+                        break;
+                    case 2:
+                        da.RNAPrepType = "Total RNA";
+                        invalidInput = false;
+                        break;
+                    default:
+                        invalidInput = true;
+                        Console.Write("\nPrep type: ");
+                        break;
+
+                }
+            }
             Console.Write("RIN: ");
             da.RNARIN = Console.ReadLine();
             dw.InsertCommon(da);

@@ -26,8 +26,6 @@ namespace ConsoleApp1
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@Sample_ID", SampleID));
                     
-                   
-
                     SqlDataReader reader = cmd1.ExecuteReader();
 
                     if (reader.HasRows)
@@ -45,39 +43,38 @@ namespace ConsoleApp1
                             string Initials = reader["Initials"].ToString();
                             string PiValue = reader["Pi_Value"].ToString();
                             string DateOfAddition = reader["Date_Of_Addition"].ToString();
-                            Console.WriteLine("SAMPLE ID: " + SampleID);
-                            Console.WriteLine("Sample Type of " + SampleID + " is " + SampleType);
-                            Console.WriteLine("Genome type is" + GenomeType);
-                            Console.WriteLine("Treatment of sample " + SampleID + " is:" + Treatment);
-                            Console.WriteLine("Condition of the sample " + SampleID + " is: " + Condition);
-                            Console.WriteLine("Comments for sample " + SampleID + " is: " + Comments);
-                            Console.WriteLine("Concentration of sample " + SampleID + " is: " + Concentration);
-                            Console.WriteLine("Volume of sample " + SampleID + " is: " + Volume);
-                            Console.WriteLine("Initials of sample " + SampleID + " is: " + Initials);
-                            Console.WriteLine("PI of sample " + SampleID + " is: " + PiValue );
-                            Console.WriteLine("Date of addition for sample " + SampleID + " is: " + DateOfAddition);
+                            Console.WriteLine("SAMPLE ID:          " + SampleID);
+                            Console.WriteLine("Sample Type:        " + SampleType);
+                            Console.WriteLine("Genome Type:        " + GenomeType);
+                            Console.WriteLine("Treatment:          " + SampleID + " is:" + Treatment);
+                            Console.WriteLine("Condition:          " + Condition);
+                            Console.WriteLine("Comments:           " + SampleID + " is: " + Comments);
+                            Console.WriteLine("Concentration:      " + Concentration);
+                            Console.WriteLine("Volume:             " + Volume);
+                            Console.WriteLine("Initials:           " + Initials);
+                            Console.WriteLine("PI:                 " + PiValue );
+                            Console.WriteLine("Date:               " + DateOfAddition);
                             
                             if (SampleType == "ATAC-Seq")
                             {
                                 string TransposaseUnit = reader["Transposase_Unit"].ToString();
                                 string PCRCycles = reader["PCR_Cycles"].ToString();
-                                Console.WriteLine("Transposase unit count of sample " + SampleID + " is: " + TransposaseUnit);
-                                Console.WriteLine("PCR cycles count of sample " + SampleID + " is : " + PCRCycles);
-                                
+                                Console.WriteLine("Transposase Unit:   " + TransposaseUnit);
+                                Console.WriteLine("PCR Cycles:         " + PCRCycles);
                             }
                             else if (SampleType == "HI-C")
                             {
                                 string RestrictionEnzyme = reader["Restriction_Enzyme"].ToString();
                                 string PCRCycles = reader["PCR_Cycles"].ToString();
-                                Console.WriteLine("Restriction enzyme count of sample " + SampleID + " is: " + RestrictionEnzyme);
-                                Console.WriteLine("PCR Cycle count of sample " + SampleID + " is: " + PCRCycles);
+                                Console.WriteLine("Restriction Enzyme: " + RestrictionEnzyme);
+                                Console.WriteLine("PCR Cycle:          " + PCRCycles);
                             }
                            else  if (SampleType == "RNA-Seq")
                             {
                                 string PrepType = reader["Prep_Type"].ToString();
                                 string RIN = reader["RIN"].ToString();
-                                Console.WriteLine("The prep type of sample " + SampleID + " is: " + PrepType);
-                                Console.WriteLine("The RIN of the sample " + SampleID + " is: " + RIN);
+                                Console.WriteLine("Prep Type:          " + PrepType);
+                                Console.WriteLine("RIN:                " + RIN);
                             }
 
                           else if (SampleType == "ChIP-Seq")
@@ -85,9 +82,9 @@ namespace ConsoleApp1
                                 string Antibody = reader["Antibody"].ToString();
                                 string AntibodyLot = reader["Antibody_Lot"].ToString();
                                 string AntibodyCatalogueNumber = reader["Antibody_Catalogue_Number"].ToString();
-                                Console.WriteLine("The antibody of the sample " + SampleID + " is: " + Antibody);
-                                Console.WriteLine("The antibody lot of the sample " + SampleID + " is: " + AntibodyLot);
-                                Console.WriteLine("The anti body catalogue number of the sample " + SampleID + " is: " + AntibodyCatalogueNumber);
+                                Console.WriteLine("Atibody:            " + Antibody);
+                                Console.WriteLine("Antibody Lot:       " + AntibodyLot);
+                                Console.WriteLine("Antibody Cat. Nr:   " + AntibodyCatalogueNumber);
                             }
                          
                         }
