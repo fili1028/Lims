@@ -88,7 +88,7 @@ namespace ConsoleApp1
 
         public void GetSampleByID()
         {
-            Console.WriteLine("\nSearch for sample by ID\n0. Back to menu");
+            Console.WriteLine("0. Back to menu\n\nSearch for sample by ID") ;
             int userSelection = GetUserInput();
             if (userSelection == 0)
             {
