@@ -8,6 +8,7 @@ namespace ConsoleApp1
 {
     class DataEntry
     {
+        DatabaseWriter dw = new DatabaseWriter();
         DatabaseAttribute da = new DatabaseAttribute();
         public void EnterCommonData(string SampleType)
         {
@@ -49,24 +50,19 @@ namespace ConsoleApp1
                     EnterDataForRNA(da);
                     break;
             }
-
         }
 
-        public void EnterDataForATAC(DatabaseAttribute da) //Refactor
+        public void EnterDataForATAC(DatabaseAttribute da) 
         {
-
-            DatabaseWriter dw = new DatabaseWriter();
             Console.Write("Transposase units: ");
             da.ATACTransposaseUnit = GetUserInputDouble();
             Console.Write("PCR Cycles: ");
             da.ATACPCRCycles = GetUserInputDouble();
-            dw.InsertCommon(da);
-            
+            dw.InsertCommon(da);   
         }
 
-        public void EnterDataForCHIP(DatabaseAttribute da) //Refactor
+        public void EnterDataForCHIP(DatabaseAttribute da) 
         {
-            DatabaseWriter dw = new DatabaseWriter();
             Console.Write("Antibody: ");
             da.ChIPAntibody = Console.ReadLine();
             Console.Write("Antibody Lot: ");
@@ -76,9 +72,8 @@ namespace ConsoleApp1
             dw.InsertCommon(da);
         }
 
-        public void EnterDataForRNA(DatabaseAttribute da) //Refactor
-        {                                                 //Refactor
-            DatabaseWriter dw = new DatabaseWriter();
+        public void EnterDataForRNA(DatabaseAttribute da) 
+        {                                                 
             Console.WriteLine("Prep type: ");
             Console.WriteLine("  1.mRNA\n  2.Total RNA");
             bool invalidInput = true;
@@ -104,11 +99,10 @@ namespace ConsoleApp1
             Console.Write("RIN: ");
             da.RNARIN = Console.ReadLine();
             dw.InsertCommon(da);
-        }                                                 //Refactor
-                                                          //Refactor
-        public void EnterDataForHI(DatabaseAttribute da)  //Refactor
+        }                                                 
+
+        public void EnterDataForHI(DatabaseAttribute da)  
         {
-            DatabaseWriter dw = new DatabaseWriter();
             Console.Write("Restriction Enzyme: ");
             da.HIRestrictionEnzyme = GetUserInputDouble();
             Console.Write("PCR Cycles");
