@@ -102,7 +102,7 @@ namespace ConsoleApp1
         {
             Console.Write("Restriction Enzyme: ");
             da.HIRestrictionEnzyme = GetUserInputDouble();
-            Console.Write("PCR Cycles");
+            Console.Write("PCR Cycles: ");
             da.HIPCRCycles = GetUserInputDouble();
             dw.InsertCommon(da);
         }
