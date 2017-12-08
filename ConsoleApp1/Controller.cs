@@ -11,13 +11,13 @@ namespace ConsoleApp1
         DatabaseReader db = new DatabaseReader();
         DataEntry de = new DataEntry();
 
-        public void OpenMenu(int menuLocation) //1 == ConsoleMenu || 2 == Select more data by ID(make method) ||kg
+        public void OpenMenu(int menuLocation) //1 == ConsoleMenu || 2 == Select more data by ID ||
         {
             Menu m = new Menu();
             switch (menuLocation)
             {
                 case 1:
-                    m.ConsoleMenu();
+                    m.MainMenu();
                 break;
                 case 2:
                     m.GetSampleByID();
@@ -55,7 +55,6 @@ namespace ConsoleApp1
             db.GetSampleByID(sampleID);
             Console.ReadKey();
             OpenMenu(2);
-            
         }
     }
 }

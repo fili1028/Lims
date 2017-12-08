@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
         Controller c = new Controller();
 
-        public void ConsoleMenu()
+        public void MainMenu()
         {
             Console.Clear();
             Console.WriteLine(@".____    .___   _____    _________");
@@ -62,13 +62,13 @@ namespace ConsoleApp1
                                 break;
                             case 0:
                                 Console.Clear();
-                                ConsoleMenu();
+                                MainMenu();
                                 break;
                         }
                         break;
 
                     case 2:
-                        Console.Clear();//rather here than in the method, if user wants to retrieve more than 1 and keep the earlier samples in the window
+                        Console.Clear();//rather here than in the method, if user wants to retrieve more than 1 sample and keep the earlier samples in the window
                         GetSampleByID();
                         break;
 
@@ -80,11 +80,9 @@ namespace ConsoleApp1
                         Console.WriteLine("Command not found. Press any key");
                         Console.ReadKey();
                         Console.Clear();
-                        ConsoleMenu();
+                        MainMenu();
                         break;
-
                 }
-
             }
         }
 
@@ -94,13 +92,12 @@ namespace ConsoleApp1
             int userSelection = GetUserInput();
             if (userSelection == 0)
             {
-                ConsoleMenu();
+                MainMenu();
             }
             else
             {
                 c.GetSampleByID(userSelection);
             }
-            
         }
 
         private int GetUserInput()
