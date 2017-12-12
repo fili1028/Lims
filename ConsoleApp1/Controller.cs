@@ -10,15 +10,17 @@ namespace ConsoleApp1
     {
         DatabaseReader db = new DatabaseReader();
         DataEntry de = new DataEntry();
-        Menu m = new Menu(); //moved the instance here instead of having it inside a method(OpenMenu())
+         //moved the instance here instead of having it inside a method(OpenMenu())
                             //if shit starts to break, check here!!!
         public void OpenMenu()
         {
+            Menu m = new Menu();
             m.MainMenu();
         }
 
         public void OpenGetSampleByIdMenu()
         {
+            Menu m = new Menu();
             m.GetSampleByID();
         }
         public void EnterDataForATAC()
@@ -48,7 +50,8 @@ namespace ConsoleApp1
         public void GetSampleByID(int sampleID)
         {
             Console.Clear();
-            db.GetSampleByID(sampleID);
+            //db.GetSampleByID(sampleID);
+            db.GetSampleTypeByID(sampleID);
             Console.ReadKey();
             OpenGetSampleByIdMenu();//only place where second menu is called
         }
