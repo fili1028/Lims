@@ -87,7 +87,7 @@ namespace ConsoleApp1
                             inappropriateInput = false;
                             con.Close(); //needed ?
                             Controller c = new Controller();
-                            c.OpenMenu(1);
+                            c.OpenMenu();
                         }
                         else
                         {

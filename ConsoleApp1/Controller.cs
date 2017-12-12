@@ -10,43 +10,39 @@ namespace ConsoleApp1
     {
         DatabaseReader db = new DatabaseReader();
         DataEntry de = new DataEntry();
-
-        public void OpenMenu(int menuLocation) //1 == ConsoleMenu || 2 == Select more data by ID ||
+        Menu m = new Menu(); //moved the instance here instead of having it inside a method(OpenMenu())
+                            //if shit starts to break, check here!!!
+        public void OpenMenu()
         {
-            Menu m = new Menu();
-            switch (menuLocation)
-            {
-                case 1:
-                    m.MainMenu();
-                break;
-                case 2:
-                    m.GetSampleByID();
-                break;
-            }
-            
+            m.MainMenu();
+        }
+
+        public void OpenGetSampleByIdMenu()
+        {
+            m.GetSampleByID();
         }
         public void EnterDataForATAC()
         {
             de.EnterCommonData("ATAC-Seq");
-            OpenMenu(1);
+            OpenMenu();
         }
 
         public void EnterDataForCHIP()
         {
             de.EnterCommonData("ChIP-Seq");
-            OpenMenu(1);
+            OpenMenu();
         }
 
         public void EnterDataForRNA()
         {
             de.EnterCommonData("RNA-Seq");
-            OpenMenu(1);
+            OpenMenu();
         }
 
         public void EnterDataForHI()
         {
             de.EnterCommonData("Hi-C");
-            OpenMenu(1);
+            OpenMenu();
         }
 
         public void GetSampleByID(int sampleID)
@@ -54,7 +50,7 @@ namespace ConsoleApp1
             Console.Clear();
             db.GetSampleByID(sampleID);
             Console.ReadKey();
-            OpenMenu(2);
+            OpenGetSampleByIdMenu();//only place where second menu is called
         }
     }
 }
