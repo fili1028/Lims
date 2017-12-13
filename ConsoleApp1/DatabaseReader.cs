@@ -94,6 +94,7 @@ namespace ConsoleApp1
                         {
                             string xampleType = reader["Sample_Type"].ToString();
                             string GenomeType = reader["Genome_Type"].ToString();
+                            string CellType = reader["Cell_Type"].ToString();
                             string Treatment = reader["Treatment"].ToString();
                             string Condition = reader["Condition"].ToString();
                             string Comments = reader["Comments"].ToString();
@@ -105,6 +106,7 @@ namespace ConsoleApp1
                             Console.WriteLine("SAMPLE ID:          " + SampleID);
                             Console.WriteLine("Sample Type:        " + SampleType);
                             Console.WriteLine("Genome Type:        " + GenomeType);
+                            Console.WriteLine("Cell Type:          " + CellType);
                             Console.WriteLine("Treatment:          " + Treatment);
                             Console.WriteLine("Condition:          " + Condition);
                             Console.WriteLine("Comments:           " + Comments);
