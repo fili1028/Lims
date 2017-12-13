@@ -13,7 +13,7 @@ namespace ConsoleApp1
         private static string connectionString =
         "Server=EALSQL1.eal.local; Database= DB2017_C08; User Id=USER_C08; Password=SesamLukOp_08";
       
-        public void InsertCommon(DatabaseAttribute da)
+        public void InsertSample(DatabaseAttribute da)
         {
             using (SqlConnection con = new SqlConnection(connectionString)) //will we need to close the connection manully if we exit the connection without execution the query??
             {

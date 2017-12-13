@@ -56,7 +56,7 @@ namespace ConsoleApp1
             da.ATACTransposaseUnit = GetUserInputDouble();
             Console.Write("PCR Cycles: ");
             da.ATACPCRCycles = GetUserInputDouble();
-            dw.InsertCommon(da);   
+            dw.InsertSample(da);   
         }
 
         public void EnterDataForCHIP(DatabaseAttribute da) 
@@ -67,7 +67,7 @@ namespace ConsoleApp1
             da.ChIPAtibodyLot = Console.ReadLine();
             Console.Write("Antibody Catalouge Number: ");
             da.ChIPAntibodyCatalogueNumber = Console.ReadLine();
-            dw.InsertCommon(da);
+            dw.InsertSample(da);
         }
 
         public void EnterDataForRNA(DatabaseAttribute da) 
@@ -95,7 +95,7 @@ namespace ConsoleApp1
             }
             Console.Write("RIN: ");
             da.RNARIN = Console.ReadLine();
-            dw.InsertCommon(da);
+            dw.InsertSample(da);
         }                                                 
 
         public void EnterDataForHI(DatabaseAttribute da)  
@@ -104,7 +104,7 @@ namespace ConsoleApp1
             da.HIRestrictionEnzyme = GetUserInputDouble();
             Console.Write("PCR Cycles: ");
             da.HIPCRCycles = GetUserInputDouble();
-            dw.InsertCommon(da);
+            dw.InsertSample(da);
         }
        
         private double GetUserInputDouble()
