@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-           Controller c = new Controller();
+           Controller c = new Controller(); //Why not start directly in the menu?
            c.OpenMenu();
         }
     }
