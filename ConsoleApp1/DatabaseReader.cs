@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.OleDb;
+
 
 
 namespace ConsoleApp1
@@ -34,7 +36,10 @@ namespace ConsoleApp1
                         while (reader.Read())
                         {
                             sampleType = reader["Sample_Type"].ToString();
-                            
+                            //if (sampleType.Contains('-'))
+                            //{
+                             //   sampleType = sampleType.Replace('-', '_');
+                            //}//make more pretty..try fix :)
                         }
                     }
                 }
@@ -48,6 +53,7 @@ namespace ConsoleApp1
         }
 
 
+
         //Was called GetSampleByID(int SampleID)
         public void GetSampleWithStoredProcedure(int SampleID, string SampleType)
         {
@@ -55,13 +61,30 @@ namespace ConsoleApp1
             {
                 try
                 {
-                    con.Open();
+                    //con.Open();
                     SqlCommand cmd1 = new SqlCommand("spGetSampleInfoFromIDAndType", con);
                     cmd1.CommandType = CommandType.StoredProcedure;
-                    cmd1.Parameters.Add(new SqlParameter("@Sample_ID", SampleID));
-                    cmd1.Parameters.Add(new SqlParameter("@Sample_Type", SampleType));
 
+                    
+
+                   cmd1.Parameters.Add("@Sample_ID", SqlDbType.Int).Value = SampleID;
+                   cmd1.Parameters.Add("@Sample_Type", SqlDbType.VarChar).Value = SampleType;
+
+                   // cmd1.Parameters.Add(SampleID);
+                   // cmd1.Parameters.Add(SampleType);
+
+                    con.Open();
                     SqlDataReader reader = cmd1.ExecuteReader();
+
+                    /*SqlParameter idPar = cmd1.Parameters.Add("idPar", SqlDbType.Int);
+                    idPar.Direction = ParameterDirection.Input;
+                    SqlParameter stPar = cmd1.Parameters.Add("stPar", SqlDbType.VarChar, 8);
+                    stPar.Direction = ParameterDirection.Input;*/
+
+                    //cmd.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = txtFirstName.Text;
+
+                    //cmd1.Parameters.Add(new SqlParameter("@Sample_ID", SampleID ));
+                    //cmd1.Parameters.Add(new SqlParameter("@Sample_Type", SampleType));
 
                     bool red = reader.HasRows;
 
@@ -92,7 +115,7 @@ namespace ConsoleApp1
                             Console.WriteLine("Date:               " + DateOfAddition);
 
                             //change this to switch!
-                            if (SampleType == "ATAC_Seq")//if prob, changed from - to _
+                            if (SampleType == "ATAC-Seq")//if prob, changed from - to _
                             {
                                 string TransposaseUnit = reader["Transposase_Unit"].ToString();
                                 string PCRCycles = reader["PCR_Cycles"].ToString();
