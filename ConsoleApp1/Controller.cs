@@ -18,11 +18,12 @@ namespace ConsoleApp1
             m.MainMenu();
         }
 
-        public void OpenGetSampleByIdMenu()
+        public void OpenGetSampleMenu()
         {
             Menu m = new Menu();
-            m.GetSampleByID();
+            m.GetSample();
         }
+        
         public void EnterDataForATAC()
         {
             de.EnterCommonData("ATAC-Seq");
@@ -50,10 +51,17 @@ namespace ConsoleApp1
         public void GetSampleByID(int sampleID)
         {
             Console.Clear();
-            //db.GetSampleByID(sampleID);
             db.GetSampleTypeByID(sampleID);
             Console.ReadKey();
-            OpenGetSampleByIdMenu();//only place where second menu is called
+            OpenGetSampleMenu();
+        }
+
+        public void GetSampleByString(string value, string dbParameter)
+        {
+            Console.Clear();
+            db.GetDBAccessValuesByString(value, dbParameter);
+            Console.ReadKey();
+            OpenGetSampleMenu();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace ConsoleApp1
                 {
                     con.Open();
                     SqlCommand cmd1 = new SqlCommand();
-                    if (da.SampleType == "ATAC-Seq")
+                    if (da.SampleType == "ATAC-Seq") //change to switch/case
                     {
                         cmd1 = new SqlCommand("spAddSample_ATAC_Seq", con);
                     }

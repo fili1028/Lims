@@ -69,7 +69,7 @@ namespace ConsoleApp1
 
                     case 2:
                         Console.Clear();//rather here than in the method, if user wants to retrieve more than 1 sample and keep the earlier samples in the window
-                        GetSampleByID();
+                        GetSample();
                         break;
 
                     case 0:
@@ -86,17 +86,60 @@ namespace ConsoleApp1
             }
         }
 
-        public void GetSampleByID()
+        public void GetSample()
         {
-            Console.WriteLine("0. Back to menu\n\nSearch for sample by ID") ;
+            Console.Clear();
+            Console.WriteLine("0. Back to menu") ;
+            Console.WriteLine("1. Search for sample by ID");//placeholder to access new method in database reader
+            Console.WriteLine("2. Search for samples by value");
             int userSelection = GetUserInput();
             if (userSelection == 0)
             {
                 MainMenu();
             }
-            else
+            else if(userSelection == 1)
             {
-                c.GetSampleByID(userSelection);
+                Console.Clear();
+                Console.WriteLine("Enter SampleID");
+                c.GetSampleByID(GetUserInput());
+            }
+            else if (userSelection == 2)
+            {
+                Console.Clear();
+                Console.WriteLine("1.Antibody");
+                Console.WriteLine("2.Cell Type");
+                Console.WriteLine("3.Condition");
+                Console.WriteLine("4.Initials");
+                Console.WriteLine("5.PI");
+                Console.WriteLine("6.Treatment");
+
+                switch (GetUserInput())
+                {
+                    case 1:
+                        Console.Write("Antibody: ");
+                        c.GetSampleByString(Console.ReadLine(), "@Antibody");
+                        break;
+                    case 2:
+                        Console.Write("Cell Type: ");
+                        c.GetSampleByString(Console.ReadLine(), "@Cell_Type");
+                        break;
+                    case 3:
+                        Console.Write("Condition: ");
+                        c.GetSampleByString(Console.ReadLine(), "@Condition");
+                        break;
+                    case 4:
+                        Console.Write("Initials: ");
+                        c.GetSampleByString(Console.ReadLine(), "@Initials");
+                        break;
+                    case 5:
+                        Console.Write("PI: ");
+                        c.GetSampleByString(Console.ReadLine(), "@PI_Value");
+                        break;
+                    case 6:
+                        Console.Write("Treatment: ");
+                        c.GetSampleByString(Console.ReadLine(), "@Treatment");
+                        break;
+                }
             }
         }
 
