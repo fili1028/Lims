@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Controller
+    public class Controller
     {
         DatabaseReader db = new DatabaseReader();
         DataEntry de = new DataEntry();
