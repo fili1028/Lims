@@ -41,6 +41,7 @@ namespace ConsoleApp1
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@Sample_Type", da.SampleType));
                     cmd1.Parameters.Add(new SqlParameter("@Genome_Type", da.GenomeType));
+                    cmd1.Parameters.Add(new SqlParameter("@Cell_Type", da.CellType));
                     cmd1.Parameters.Add(new SqlParameter("@Treatment", da.Treatment));
                     cmd1.Parameters.Add(new SqlParameter("@Condition", da.Condition));
                     cmd1.Parameters.Add(new SqlParameter("@Comments", da.Comments));

@@ -16,6 +16,8 @@ namespace ConsoleApp1
             Console.WriteLine("Sample type: " + da.SampleType);
             Console.Write("Genome type: ");
             da.GenomeType = Console.ReadLine();
+            Console.Write("Cell type: ");
+            da.CellType = Console.ReadLine();
             Console.Write("Treatment: ");
             da.Treatment = Console.ReadLine();
             Console.Write("Condition: ");
@@ -30,8 +32,8 @@ namespace ConsoleApp1
             da.Initials = Console.ReadLine();
             Console.Write("PI: ");
             da.PIValue = Console.ReadLine();
-            Console.Write("Enter the date, the format is DD-MM-YYYY: ");
-            da.DateOfAddition = Console.ReadLine();
+            da.DateOfAddition = System.DateTime.Now.ToString();
+          
 
             switch(SampleType)
             {
