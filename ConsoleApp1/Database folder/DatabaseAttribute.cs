@@ -11,6 +11,7 @@ namespace ConsoleApp1
        
         public string SampleType { get; set; } 
         public string GenomeType { get; set; }
+        public string CellType { get; set; }
         public string Treatment { get; set; }
         public string Condition { get; set; }
         public string Comments { get; set; }
