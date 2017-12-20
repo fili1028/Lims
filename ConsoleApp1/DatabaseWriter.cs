@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows;
 
 namespace ConsoleApp1
 {
@@ -104,6 +105,7 @@ namespace ConsoleApp1
                 }
                 catch (SqlException e)
                 {
+                    MessageBox.Show(e.Message.ToString());
                     //
                     //Console.WriteLine(e);
                 }

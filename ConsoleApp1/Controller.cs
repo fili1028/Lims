@@ -79,12 +79,18 @@ namespace ConsoleApp1
             OpenMenu();
         }
 
-        
+        public List<string> GetSampleBySomething(string value, string dbParameter)
+        {
+            //láta virka með array því ég þekki það, checka svo dictionary uppá að ná að halda 
+            //sampleID ef það er selectað í ListBox
+
+            return db.GetSampleByParams(value, dbParameter);
+        }
 
         public void GetSampleByID(int sampleID)
         {
             Console.Clear();
-            db.GetSampleTypeByID(sampleID);
+            //db.GetSampleTypeByID(sampleID);
             Console.ReadKey();
             OpenGetSampleMenu();
         }
@@ -92,7 +98,7 @@ namespace ConsoleApp1
         public void GetSampleByString(string value, string dbParameter)
         {
             Console.Clear();
-            db.GetDBAccessValuesByString(value, dbParameter);
+            //db.GetDBAccessValuesByString(value, dbParameter);
             Console.ReadKey();
             OpenGetSampleMenu();
         }
