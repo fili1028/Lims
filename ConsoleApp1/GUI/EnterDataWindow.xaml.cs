@@ -23,5 +23,64 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void AtacCombo_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ChipCombo_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void HiCombo_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RnaCombo_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ShowCommonEntry()
+        {
+            GenomeTypeLabel.Visibility = Visibility.Visible;
+            GenomeTypeText.Visibility = Visibility.Visible;
+            CellTypeLabel.Visibility = Visibility.Visible;
+            CellTypeText.Visibility = Visibility.Visible;
+            TreatmentLabel.Visibility = Visibility.Visible;
+            TreatmentText.Visibility = Visibility.Visible;
+            ConditionLabel.Visibility = Visibility.Visible;
+            ConditionText.Visibility = Visibility.Visible;
+            ConcentrationLabel.Visibility = Visibility.Visible;
+            ConcentrationText.Visibility = Visibility.Visible;
+            VolumeLabel.Visibility = Visibility.Visible;
+            VolumeText.Visibility = Visibility.Visible;
+            InitialsLabel.Visibility = Visibility.Visible;
+            InitialsText.Visibility = Visibility.Visible;
+            PIValueLabel.Visibility = Visibility.Visible;
+            PIValueText.Visibility = Visibility.Visible;
+
+            //vantar comments..
+        }
+
+        private void ClearCommonFields()
+        {
+            GenomeTypeText.Text = string.Empty;
+            CellTypeText.Text = string.Empty;
+            TreatmentText.Text = string.Empty;
+            ConditionText.Text = string.Empty;
+            ConcentrationText.Text = string.Empty;
+            VolumeText.Text = string.Empty;
+            InitialsText.Text = string.Empty;
+            PIValueText.Text = string.Empty;
+        }
+
+        private void ClearSpecialFields(int sampleType) //1.atac,2.chip,3.hic,4.rna
+        {
+
+        }
     }
 }

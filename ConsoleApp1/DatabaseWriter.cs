@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace ConsoleApp1
 {
-    class DatabaseWriter
+    public class DatabaseWriter
     {
         private static string connectionString =
         "Server=EALSQL1.eal.local; Database= DB2017_C08; User Id=USER_C08; Password=SesamLukOp_08";
@@ -73,8 +73,14 @@ namespace ConsoleApp1
                         cmd1.Parameters.Add(new SqlParameter("@RIN", da.RNARIN));
                     }
 
-                    bool inappropriateInput = true;
-                    while (inappropriateInput)
+                    cmd1.ExecuteNonQuery();
+                    con.Close();//needed ?
+
+
+
+
+                    //bool inappropriateInput = true;
+                    /*while (inappropriateInput)
                     {
                         Console.Write("\nSubmit? Y/N: ");
                         ConsoleKeyInfo submitCheck = Console.ReadKey();
@@ -88,17 +94,18 @@ namespace ConsoleApp1
                             inappropriateInput = false;
                             con.Close(); //needed ?
                             Controller c = new Controller();
-                            c.OpenMenu();
+                        //    c.OpenMenu();
                         }
                         else
                         {
-                            Console.Write("  -  \"" + submitCheck.KeyChar.ToString() + "\" is not valid input!");
+                      //      Console.Write("  -  \"" + submitCheck.KeyChar.ToString() + "\" is not valid input!");
                         }
-                    }
+                    }*/
                 }
                 catch (SqlException e)
                 {
-                    Console.WriteLine(e);
+                    //
+                    //Console.WriteLine(e);
                 }
             }
         }

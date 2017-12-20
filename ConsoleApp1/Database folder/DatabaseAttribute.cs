@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class DatabaseAttribute
+    public class DatabaseAttribute
     {
        
         public string SampleType { get; set; } 

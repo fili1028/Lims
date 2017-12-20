@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace ConsoleApp1
 {
-    class DatabaseReader
+    public class DatabaseReader
     {
         private static string connectionString =
                 "Server=EALSQL1.eal.local; Database= DB2017_C08; User Id=USER_C08; Password=SesamLukOp_08";

@@ -6,129 +6,71 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class DataEntry
+    public class DataEntry
     {
         DatabaseWriter dw = new DatabaseWriter();
         DatabaseAttribute da = new DatabaseAttribute();
-        public void EnterCommonData(string SampleType)
+        public void EnterCommonData(string SampleType, string genomeType, string cellType, string treatment,
+            string condition, string comments, double concentration, double volume, string initials, string PIValue,
+            string sVar1, string sVar2, string sVar3, double dVar1, double dVar2)
         {
             da.SampleType = SampleType;
-            Console.WriteLine("Sample type: " + da.SampleType);
-            Console.Write("Genome type: ");
-            da.GenomeType = Console.ReadLine();
-            Console.Write("Cell type: ");
-            da.CellType = Console.ReadLine();
-            Console.Write("Treatment: ");
-            da.Treatment = Console.ReadLine();
-            Console.Write("Condition: ");
-            da.Condition = Console.ReadLine();
-            Console.Write("Comments: ");
-            da.Comments = Console.ReadLine();
-            Console.Write("Concentration: ");
-            da.Concentration = GetUserInputDouble();
-            Console.Write("Volume: ");
-            da.Volume = GetUserInputDouble();
-            Console.Write("Initials: ");
-            da.Initials = Console.ReadLine();
-            Console.Write("PI: ");
-            da.PIValue = Console.ReadLine();
+            da.GenomeType = genomeType;
+            da.CellType = cellType;
+            da.Treatment = treatment;
+            da.Condition = condition;
+            da.Comments = comments;
+            da.Concentration = concentration;
+            da.Volume = volume;
+            da.Initials = initials;
+            da.PIValue = PIValue;
             da.DateOfAddition = System.DateTime.Now.ToString();
-          
 
             switch(SampleType)
             {
+                
                 case "ATAC-Seq":
-                    EnterDataForATAC(da);
+                    EnterDataForATAC(da, dVar1, dVar2);
                     break;
                 case "ChIP-Seq":
-                    EnterDataForCHIP(da);
+                    EnterDataForCHIP(da, sVar1, sVar2, sVar3);
                     break;
                 case "Hi-C":
-                    EnterDataForHI(da);
+                    EnterDataForHI(da, dVar1, dVar2);
                     break;
                 case "RNA-Seq":
-                    EnterDataForRNA(da);
+                    EnterDataForRNA(da, sVar1, sVar2);
                     break;
             }
         }
 
-        public void EnterDataForATAC(DatabaseAttribute da) 
+        public void EnterDataForATAC(DatabaseAttribute da, double pcrCycles, double transposaseUnits) 
         {
-            Console.Write("Transposase units: ");
-            da.ATACTransposaseUnit = GetUserInputDouble();
-            Console.Write("PCR Cycles: ");
-            da.ATACPCRCycles = GetUserInputDouble();
+            da.ATACPCRCycles = pcrCycles;
+            da.ATACTransposaseUnit = transposaseUnits;
             dw.InsertSample(da);   
         }
 
-        public void EnterDataForCHIP(DatabaseAttribute da) 
+        public void EnterDataForCHIP(DatabaseAttribute da, string antibody, string antibodyLot, string antibodyCatNr) 
         {
-            Console.Write("Antibody: ");
-            da.ChIPAntibody = Console.ReadLine();
-            Console.Write("Antibody Lot: ");
-            da.ChIPAtibodyLot = Console.ReadLine();
-            Console.Write("Antibody Catalouge Number: ");
-            da.ChIPAntibodyCatalogueNumber = Console.ReadLine();
+            da.ChIPAntibody = antibody;
+            da.ChIPAtibodyLot = antibodyLot;
+            da.ChIPAntibodyCatalogueNumber = antibodyCatNr;
             dw.InsertSample(da);
         }
 
-        public void EnterDataForRNA(DatabaseAttribute da) 
-        {                                                 
-            Console.WriteLine("Prep type: ");
-            Console.WriteLine("  1.mRNA\n  2.Total RNA");
-            bool invalidInput = true;
-            while (invalidInput)
-            {
-                switch (GetUserInputDouble())
-                {
-                    case 1:
-                        da.RNAPrepType = "mRNA";
-                        invalidInput = false;
-                        break;
-                    case 2:
-                        da.RNAPrepType = "Total RNA";
-                        invalidInput = false;
-                        break;
-                    default:
-                        invalidInput = true;
-                        Console.Write("\nPrep type: ");
-                        break;
-                }
-            }
-            Console.Write("RIN: ");
-            da.RNARIN = Console.ReadLine();
+        public void EnterDataForHI(DatabaseAttribute da, double restrictionEnzyme, double pcrCycles)
+        {
+            da.HIRestrictionEnzyme = restrictionEnzyme;
+            da.HIPCRCycles = pcrCycles;
+            dw.InsertSample(da);
+        }
+
+        public void EnterDataForRNA(DatabaseAttribute da, string prepType, string rin) 
+        {
+            da.RNAPrepType = prepType;
+            da.RNARIN = rin;
             dw.InsertSample(da);
         }                                                 
-
-        public void EnterDataForHI(DatabaseAttribute da)  
-        {
-            Console.Write("Restriction Enzyme: ");
-            da.HIRestrictionEnzyme = GetUserInputDouble();
-            Console.Write("PCR Cycles: ");
-            da.HIPCRCycles = GetUserInputDouble();
-            dw.InsertSample(da);
-        }
-       
-        private double GetUserInputDouble()
-        {
-            bool invalidSelection = true;
-            double dInput = 0.0;
-            while (invalidSelection)
-            {
-                string sInput = string.Empty;
-                sInput = Console.ReadLine();
-                bool validSelection = Double.TryParse(sInput, out dInput);
-                if (validSelection)
-                {
-                    invalidSelection = false;
-                    dInput = double.Parse(sInput);
-                }
-                else
-                {
-                    Console.WriteLine("Selection is not valid.");
-                }
-            }
-            return dInput;
-        }
     }
 }

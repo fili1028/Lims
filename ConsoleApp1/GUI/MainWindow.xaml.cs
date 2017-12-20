@@ -30,7 +30,7 @@ namespace GUI
 
         private void EnterData_Click(object sender, RoutedEventArgs e)
         {
-            window
+            
         }
 
         private void SearchData_Click(object sender, RoutedEventArgs e)

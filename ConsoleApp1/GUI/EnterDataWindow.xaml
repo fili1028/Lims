@@ -5,8 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="EnterData" Height="300" Width="300">
+        Title="EnterData" Height="300" Width="525">
     <Grid>
-        
+        <Grid>
+            <ComboBox HorizontalAlignment="Left" Margin="99,15,0,0" VerticalAlignment="Top" Width="140">
+                <ComboBoxItem x:Name="AtacCombo" Content="ATAC seq" Selected="AtacCombo_Selected"/>
+                <ComboBoxItem x:Name="ChipCombo" Content="ChIP seq" Selected="ChipCombo_Selected"/>
+                <ComboBoxItem x:Name="HiCombo" Content="Hi C" Selected="HiCombo_Selected"/>
+                <ComboBoxItem x:Name="RnaCombo" Content="RNA seq" Selected="RnaCombo_Selected"/>
+            </ComboBox>
+
+
+            <TextBox x:Name="GenomeTypeText" HorizontalAlignment="Left" TextAlignment="Left" Height="23" Margin="99,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+            <TextBox x:Name="CellTypeText" HorizontalAlignment="Left" TextAlignment="Left" Height="23" Margin="99,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+            <TextBox x:Name="TreatmentText" HorizontalAlignment="Left" TextAlignment="Left" Height="23" Margin="99,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Visibility="Visible"/>
+            <TextBox x:Name="ConditionText" HorizontalAlignment="Left" TextAlignment="Left" Height="23" Margin="99,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Visibility="Visible"/>
+            <TextBox x:Name="ConcentrationText" HorizontalAlignment="Left" TextAlignment="Left" Height="23" Margin="99,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Visibility="Visible"/>
+            <TextBox x:Name="VolumeText" HorizontalAlignment="Left" TextAlignment="Left" Height="23" Margin="99,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Visibility="Visible"/>
+            <TextBox x:Name="InitialsText" HorizontalAlignment="Left" TextAlignment="Left" Height="23" Margin="99,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+            <TextBox x:Name="PIValueText" HorizontalAlignment="Left" TextAlignment="Left" Height="23" Margin="99,238,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+
+            <Label x:Name="GenomeTypeLabel" Content="Genome Type" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Width="89" Visibility="Hidden"/>
+            <Label x:Name="CellTypeLabel" Content="Cell Type" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="89" Visibility="Hidden"/>
+            <Label x:Name="TreatmentLabel" Content="Treatment" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Width="89" Visibility="Visible"/>
+            <Label x:Name="ConditionLabel" Content="Condition" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Width="89" Visibility="Hidden"/>
+            <Label x:Name="ConcentrationLabel" Content="Concentration" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Width="89" Visibility="Hidden"/>
+            <Label x:Name="VolumeLabel" Content="Volume" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Width="89" Visibility="Hidden"/>
+            <Label x:Name="InitialsLabel" Content="Initials" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Width="89" Visibility="Hidden"/>
+            <Label x:Name="PIValueLabel" Content="PI Value" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top" Width="89" Visibility="Hidden"/>
+
+            <Label x:Name="CommentsLabel" Content="Comments" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="257,15,0,0" VerticalAlignment="Top" Width="89"/>
+            <TextBox x:Name="CommentsText" HorizontalAlignment="Left" Height="79" Margin="257,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250"/>
+
+            <Label x:Name="SpecialLabel1" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="257,126,0,0" VerticalAlignment="Top" Width="110"/>
+            <Label x:Name="SpecialLabel2" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="257,154,0,0" VerticalAlignment="Top" Width="110"/>
+            <Label x:Name="SpecialLabel3" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="257,182,0,0" VerticalAlignment="Top" Width="110"/>
+            <TextBox x:Name="SpecialText1" HorizontalAlignment="Left" TextAlignment="Left" Height="23" Margin="367,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+            <TextBox x:Name="SpecialText2" HorizontalAlignment="Left" TextAlignment="Left" Height="23" Margin="367,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+            <TextBox x:Name="SpecialText3" HorizontalAlignment="Left" TextAlignment="Left" Height="23" Margin="367,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+
+        </Grid>
+
     </Grid>
 </Window>
