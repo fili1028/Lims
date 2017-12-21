@@ -75,39 +75,11 @@ namespace ConsoleApp1
                     }
 
                     cmd1.ExecuteNonQuery();
-                    con.Close();//needed ?
-
-
-
-
-                    //bool inappropriateInput = true;
-                    /*while (inappropriateInput)
-                    {
-                        Console.Write("\nSubmit? Y/N: ");
-                        ConsoleKeyInfo submitCheck = Console.ReadKey();
-                        if (submitCheck.KeyChar == 'Y' || submitCheck.KeyChar == 'y')
-                        {
-                            inappropriateInput = false;
-                            cmd1.ExecuteNonQuery();
-                        }
-                        else if (submitCheck.KeyChar == 'N' || submitCheck.KeyChar == 'n')
-                        {
-                            inappropriateInput = false;
-                            con.Close(); //needed ?
-                            Controller c = new Controller();
-                        //    c.OpenMenu();
-                        }
-                        else
-                        {
-                      //      Console.Write("  -  \"" + submitCheck.KeyChar.ToString() + "\" is not valid input!");
-                        }
-                    }*/
+                    con.Close();//needed? 
                 }
                 catch (SqlException e)
                 {
                     MessageBox.Show(e.Message.ToString());
-                    //
-                    //Console.WriteLine(e);
                 }
             }
         }
