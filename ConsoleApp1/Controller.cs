@@ -10,44 +10,11 @@ namespace ConsoleApp1
     {
         DatabaseReader databaseReader = new DatabaseReader();
         SampleDataEntry dataEntry = new SampleDataEntry();
-        
-        //should we try to have DatabaseAttribute pass into the entry methods, instead of tons of variables
+        DatabaseWriter databaseWriter = new DatabaseWriter();
         
         public void EnterData(SampleDataAttributes sampleDataAttributes)
         {
-            dataEntry.EnterData(sampleDataAttributes);
-        }
-
-        public void EnterDataForATAC(string genomeType, string cellType, string treatment,
-            string condition, string comments, double concentration, double volume, string initials, string PIValue, 
-            double pcrCycles, double transposaseUnit)
-        {
-            dataEntry.EnterSampleData("ATAC-Seq", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
-                string.Empty, string.Empty, string.Empty, pcrCycles, transposaseUnit);
-        }
-
-        public void EnterDataForCHIP(string genomeType, string cellType, string treatment,
-            string condition, string comments, double concentration, double volume, string initials, string PIValue,
-            string antibody, string antibodyLot, string antibodyCatNr)
-        {
-            dataEntry.EnterSampleData("ChIP-Seq", genomeType, cellType, treatment, condition, comments, concentration, 
-                                        volume, initials, PIValue, antibody, antibodyLot, antibodyCatNr, 0, 0);
-        }
-
-        public void EnterDataForHI(string genomeType, string cellType, string treatment,
-            string condition, string comments, double concentration, double volume, string initials, string PIValue,
-            double restrictionEnzyme, double pcrCycles)
-        {
-            dataEntry.EnterSampleData("Hi-C", genomeType, cellType, treatment, condition, comments, concentration, 
-                volume, initials, PIValue, string.Empty, string.Empty, string.Empty, restrictionEnzyme, pcrCycles);
-        }
-
-        public void EnterDataForRNA(string genomeType, string cellType, string treatment,
-            string condition, string comments, double concentration, double volume, string initials, string PIValue,
-            string prepType, string rin)
-        {
-            dataEntry.EnterSampleData("RNA-Seq", genomeType, cellType, treatment, condition, comments, concentration, 
-                                        volume, initials, PIValue, prepType, rin, string.Empty, 0, 0);
+            databaseWriter.InsertSample(sampleDataAttributes);
         }
 
         public List<string> GetSampleByValue(string searchValue, string spParameter)
