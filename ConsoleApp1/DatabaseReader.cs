@@ -14,7 +14,7 @@ namespace ConsoleApp1
 
         private List<string> SampleType = new List<string>();
         
-        public List<string> GetSampleByParams(string value, string spParameter)
+        public List<string> GetSampleByValue(string value, string spParameter)
         {
             List<string> ret = new List<string>();
             string storedProcedure = GetStoredProcedureByParameter(value, spParameter);
@@ -24,6 +24,33 @@ namespace ConsoleApp1
                 ret.Add(GetSampleWithTypeAndId(SampleType[i], sampleID[i]));
             }
             return ret;
+        }
+        public string GetSampleByID(int sampleID)
+        {
+            string sampleType = string.Empty;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand GetSampleType = new SqlCommand("spGetSampleTypeByID", con);
+                    GetSampleType.CommandType = CommandType.StoredProcedure;
+                    GetSampleType.Parameters.Add(new SqlParameter("@Sample_ID", sampleID));
+                    SqlDataReader reader = GetSampleType.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            sampleType = reader["Sample_Type"].ToString();
+                        }
+                    }
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            return GetSampleWithTypeAndId(sampleType, sampleID);
         }
         private string GetStoredProcedureByParameter(string value, string spParameter)
         {
@@ -119,7 +146,7 @@ namespace ConsoleApp1
                             string PiValue = reader["Pi_Value"].ToString();
                             string DateOfAddition = reader["Date_Of_Addition"].ToString();
 
-                            ret = "SampleID:           " + sampleID + nl +
+                            ret = "Sample ID:          " + sampleID.ToString() + nl +
                                   "Sample Type:        " + sampleType + nl +
                                   "Cell Type:          " + CellType + nl +
                                   "Treatment:          " + Treatment + nl +
@@ -160,7 +187,6 @@ namespace ConsoleApp1
                                            "Antibody Cat. Nr:   " + AntibodyCatalogueNumber + nl;
                                     break;
                             }
-
                         }
                     }
                 }

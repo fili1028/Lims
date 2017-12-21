@@ -12,39 +12,6 @@ namespace ConsoleApp1
         DataEntry de = new DataEntry();
          //moved the instance here instead of having it inside a method(OpenMenu())
                             //if shit starts to break, check here!!!
-        public void OpenMenu()
-        {
-            //Menu m = new Menu();
-            //m.MainMenu();
-        }
-
-        public void OpenGetSampleMenu()
-        {
-            //Menu m = new Menu();
-            //m.GetSample();
-        }
-
-        public void EnterData(string sampleType, string genomeType, string treatment,
-            string condition, string comment, double concentration, double volume, 
-            string initials, string PIValue, string sVar1, string sVar2, string sVar3,
-            double dVar1, double dvar2)//for UI
-        {
-            switch (sampleType)
-            {
-                case "ATAC - Seq":
-
-                    break;
-                case "ChIP-Seq":
-
-                    break;
-                case "RNA-Seq":
-
-                    break;
-                case "Hi-C":
-
-                    break;
-            }
-        }
         
         public void EnterDataForATAC(string genomeType, string cellType, string treatment,
             string condition, string comments, double concentration, double volume, string initials, string PIValue, 
@@ -76,31 +43,19 @@ namespace ConsoleApp1
         {
             de.EnterCommonData("RNA-Seq", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
                 prepType, rin, string.Empty, 0, 0);
-            OpenMenu();
         }
 
-        public List<string> GetSampleBySomething(string value, string dbParameter)
+        public List<string> GetSampleByValue(string value, string dbParameter)
         {
             //láta virka með array því ég þekki það, checka svo dictionary uppá að ná að halda 
             //sampleID ef það er selectað í ListBox
 
-            return db.GetSampleByParams(value, dbParameter);
+            return db.GetSampleByValue(value, dbParameter);
         }
 
-        public void GetSampleByID(int sampleID)
+        public string GetSampleByID(int sampleID)
         {
-            Console.Clear();
-            //db.GetSampleTypeByID(sampleID);
-            Console.ReadKey();
-            OpenGetSampleMenu();
-        }
-
-        public void GetSampleByString(string value, string dbParameter)
-        {
-            Console.Clear();
-            //db.GetDBAccessValuesByString(value, dbParameter);
-            Console.ReadKey();
-            OpenGetSampleMenu();
+            return db.GetSampleByID(sampleID);
         }
     }
 }
