@@ -43,6 +43,10 @@ namespace ConsoleApp1
                             sampleType = reader["Sample_Type"].ToString();
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Sample not found!");
+                    }
                 }
                 catch (SqlException e)
                 {
@@ -51,6 +55,7 @@ namespace ConsoleApp1
             }
             return GetSampleWithSampleTypeAndId(sampleType, sampleID);
         }
+
         private string GetStoredProcedureByParameter(string value, string spParameter)
         {
             string storedProcedure = string.Empty;
@@ -120,19 +125,20 @@ namespace ConsoleApp1
             {
                 try
                 {
-                    SqlCommand cmd1 = new SqlCommand("spGetSampleInfoFromIDAndType", con);
-                    cmd1.CommandType = CommandType.StoredProcedure;
+                    SqlCommand cmd = new SqlCommand("spGetSampleInfoFromIDAndType", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd1.Parameters.Add("@Sample_ID", SqlDbType.Int).Value = sampleID;
-                    cmd1.Parameters.Add("@Sample_Type", SqlDbType.VarChar).Value = sampleType;
+                    cmd.Parameters.Add("@Sample_ID", SqlDbType.Int).Value = sampleID;
+                    cmd.Parameters.Add("@Sample_Type", SqlDbType.VarChar).Value = sampleType;
 
                     con.Open();
-                    SqlDataReader reader = cmd1.ExecuteReader();
+                    SqlDataReader reader = cmd.ExecuteReader();
 
                     if (reader.HasRows)
                     {
                         while (reader.Read()) //problem with getting wrong data when searching by value
                         {
+#region reader to string                           
                             string GenomeType = reader["Genome_Type"].ToString();
                             string CellType = reader["Cell_Type"].ToString();
                             string Treatment = reader["Treatment"].ToString();
@@ -143,7 +149,7 @@ namespace ConsoleApp1
                             string Initials = reader["Initials"].ToString();
                             string PiValue = reader["Pi_Value"].ToString();
                             string DateOfAddition = reader["Date_Of_Addition"].ToString();
-
+                            #endregion
                             ret = "Sample ID:          " + sampleID.ToString() + nl +
                                   "Sample Type:        " + sampleType + nl +
                                   "Cell Type:          " + CellType + nl +
@@ -155,7 +161,7 @@ namespace ConsoleApp1
                                   "Initials:           " + Initials + nl +
                                   "PI Value:           " + PiValue + nl +
                                   "Date:               " + DateOfAddition + nl;
-
+#region sample specific data
                             switch (sampleType)
                             {
                                 case "ATAC-Seq":
@@ -184,6 +190,7 @@ namespace ConsoleApp1
                                            "Antibody Lot:       " + AntibodyLot + nl +
                                            "Antibody Cat. Nr:   " + AntibodyCatalogueNumber + nl;
                                     break;
+#endregion
                             }
                         }
                     }
