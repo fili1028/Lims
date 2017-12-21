@@ -55,7 +55,6 @@
     <Compile Include="SampleDataAttributes.cs" />
     <Compile Include="DatabaseReader.cs" />
     <Compile Include="DatabaseWriter.cs" />
-    <Compile Include="SampleDataEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

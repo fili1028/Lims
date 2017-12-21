@@ -9,7 +9,6 @@ namespace ConsoleApp1
     public class Controller
     {
         DatabaseReader databaseReader = new DatabaseReader();
-        SampleDataEntry dataEntry = new SampleDataEntry();
         DatabaseWriter databaseWriter = new DatabaseWriter();
         
         public void EnterData(SampleDataAttributes sampleDataAttributes)
