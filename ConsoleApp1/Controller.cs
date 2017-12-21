@@ -8,16 +8,16 @@ namespace ConsoleApp1
 {
     public class Controller
     {
-        DatabaseReader db = new DatabaseReader();
-        DataEntry de = new DataEntry();
-         //moved the instance here instead of having it inside a method(OpenMenu())
-                            //if shit starts to break, check here!!!
+        DatabaseReader databaseReader = new DatabaseReader();
+        DataEntry dataEntry = new DataEntry();
+        
+        //should we try to have DatabaseAttribute pass into the entry methods, instead of tons of variables
         
         public void EnterDataForATAC(string genomeType, string cellType, string treatment,
             string condition, string comments, double concentration, double volume, string initials, string PIValue, 
             double pcrCycles, double transposaseUnit)
         {
-            de.EnterCommonData("ATAC-Seq", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
+            dataEntry.EnterCommonData("ATAC-Seq", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
                 string.Empty, string.Empty, string.Empty, pcrCycles, transposaseUnit);
         }
 
@@ -25,7 +25,7 @@ namespace ConsoleApp1
             string condition, string comments, double concentration, double volume, string initials, string PIValue,
             string antibody, string antibodyLot, string antibodyCatNr)
         {
-            de.EnterCommonData("ChIP-Seq", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
+            dataEntry.EnterCommonData("ChIP-Seq", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
                 antibody, antibodyLot, antibodyCatNr, 0, 0);
         }
 
@@ -33,7 +33,7 @@ namespace ConsoleApp1
             string condition, string comments, double concentration, double volume, string initials, string PIValue,
             double restrictionEnzyme, double pcrCycles)
         {
-            de.EnterCommonData("Hi-C", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
+            dataEntry.EnterCommonData("Hi-C", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
                 string.Empty, string.Empty, string.Empty, restrictionEnzyme, pcrCycles);
         }
 
@@ -41,21 +41,21 @@ namespace ConsoleApp1
             string condition, string comments, double concentration, double volume, string initials, string PIValue,
             string prepType, string rin)
         {
-            de.EnterCommonData("RNA-Seq", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
+            dataEntry.EnterCommonData("RNA-Seq", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
                 prepType, rin, string.Empty, 0, 0);
         }
 
         public List<string> GetSampleByValue(string value, string dbParameter)
         {
-            //láta virka með array því ég þekki það, checka svo dictionary uppá að ná að halda 
-            //sampleID ef það er selectað í ListBox
+            //láta virka með list því ég þekki það, checka svo dictionary uppá að ná að halda 
+            //sampleID ef það er selectað í ListBox...ObservableCollection(?)
 
-            return db.GetSampleByValue(value, dbParameter);
+            return databaseReader.GetSampleByValue(value, dbParameter);
         }
 
         public string GetSampleByID(int sampleID)
         {
-            return db.GetSampleByID(sampleID);
+            return databaseReader.GetSampleByID(sampleID);
         }
     }
 }

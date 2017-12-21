@@ -28,7 +28,6 @@ namespace ConsoleApp1
 
             switch(SampleType)
             {
-                
                 case "ATAC-Seq":
                     EnterDataForATAC(da, dVar1, dVar2);
                     break;

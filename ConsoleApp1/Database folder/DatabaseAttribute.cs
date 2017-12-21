@@ -8,6 +8,8 @@ namespace ConsoleApp1
 {
     public class DatabaseAttribute
     {
+
+        //could probably get rid of rest of the classes in DatabaseFolder
        
         public string SampleType { get; set; } 
         public string GenomeType { get; set; }

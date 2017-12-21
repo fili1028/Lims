@@ -21,60 +21,60 @@ namespace ConsoleApp1
                 try
                 {
                     con.Open();
-                    SqlCommand cmd1 = new SqlCommand();
+                    SqlCommand cmd = new SqlCommand();
                     if (da.SampleType == "ATAC-Seq") //change to switch/case
                     {
-                        cmd1 = new SqlCommand("spAddSample_ATAC_Seq", con);
+                        cmd = new SqlCommand("spAddSample_ATAC_Seq", con);
                     }
                     else if (da.SampleType == "ChIP-Seq")
                     {
-                        cmd1 = new SqlCommand("spAddSample_ChIP_Seq", con);
+                        cmd = new SqlCommand("spAddSample_ChIP_Seq", con);
                     }
                     else if (da.SampleType == "Hi-C")
                     {
-                        cmd1 = new SqlCommand("spAddSample_Hi_C", con);
+                        cmd = new SqlCommand("spAddSample_Hi_C", con);
                     }
                     if (da.SampleType == "RNA-Seq")
                     {
-                        cmd1 = new SqlCommand("spAddSample_RNA_Seq", con);
+                        cmd = new SqlCommand("spAddSample_RNA_Seq", con);
                     }
 
-                    cmd1.CommandType = CommandType.StoredProcedure;
-                    cmd1.Parameters.Add(new SqlParameter("@Sample_Type", da.SampleType));
-                    cmd1.Parameters.Add(new SqlParameter("@Genome_Type", da.GenomeType));
-                    cmd1.Parameters.Add(new SqlParameter("@Cell_Type", da.CellType));
-                    cmd1.Parameters.Add(new SqlParameter("@Treatment", da.Treatment));
-                    cmd1.Parameters.Add(new SqlParameter("@Condition", da.Condition));
-                    cmd1.Parameters.Add(new SqlParameter("@Comments", da.Comments));
-                    cmd1.Parameters.Add(new SqlParameter("@Concentration", da.Concentration));
-                    cmd1.Parameters.Add(new SqlParameter("@Volume", da.Volume));
-                    cmd1.Parameters.Add(new SqlParameter("@Initials", da.Initials));
-                    cmd1.Parameters.Add(new SqlParameter("@PI_Value", da.PIValue));
-                    cmd1.Parameters.Add(new SqlParameter("@Date_Of_Addition", da.DateOfAddition));
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@Sample_Type", da.SampleType));
+                    cmd.Parameters.Add(new SqlParameter("@Genome_Type", da.GenomeType));
+                    cmd.Parameters.Add(new SqlParameter("@Cell_Type", da.CellType));
+                    cmd.Parameters.Add(new SqlParameter("@Treatment", da.Treatment));
+                    cmd.Parameters.Add(new SqlParameter("@Condition", da.Condition));
+                    cmd.Parameters.Add(new SqlParameter("@Comments", da.Comments));
+                    cmd.Parameters.Add(new SqlParameter("@Concentration", da.Concentration));
+                    cmd.Parameters.Add(new SqlParameter("@Volume", da.Volume));
+                    cmd.Parameters.Add(new SqlParameter("@Initials", da.Initials));
+                    cmd.Parameters.Add(new SqlParameter("@PI_Value", da.PIValue));
+                    cmd.Parameters.Add(new SqlParameter("@Date_Of_Addition", da.DateOfAddition));
 
                     if (da.SampleType == "ATAC-Seq")
                     {
-                        cmd1.Parameters.Add(new SqlParameter("@Transposase_Unit", da.ATACTransposaseUnit));
-                        cmd1.Parameters.Add(new SqlParameter("@PCR_Cycles", da.ATACPCRCycles));
+                        cmd.Parameters.Add(new SqlParameter("@Transposase_Unit", da.ATACTransposaseUnit));
+                        cmd.Parameters.Add(new SqlParameter("@PCR_Cycles", da.ATACPCRCycles));
                     }
                     else if (da.SampleType == "ChIP-Seq")
                     {
-                        cmd1.Parameters.Add(new SqlParameter("@Antibody", da.ChIPAntibody));
-                        cmd1.Parameters.Add(new SqlParameter("@Antibody_Lot", da.ChIPAtibodyLot));
-                        cmd1.Parameters.Add(new SqlParameter("@Antibody_Catalogue_Number", da.ChIPAntibodyCatalogueNumber));
+                        cmd.Parameters.Add(new SqlParameter("@Antibody", da.ChIPAntibody));
+                        cmd.Parameters.Add(new SqlParameter("@Antibody_Lot", da.ChIPAtibodyLot));
+                        cmd.Parameters.Add(new SqlParameter("@Antibody_Catalogue_Number", da.ChIPAntibodyCatalogueNumber));
                     }
                     else if (da.SampleType == "Hi-C")
                     {
-                        cmd1.Parameters.Add(new SqlParameter("@Restriction_Enzyme", da.HIRestrictionEnzyme));
-                        cmd1.Parameters.Add(new SqlParameter("@PCR_Cycles", da.HIPCRCycles));
+                        cmd.Parameters.Add(new SqlParameter("@Restriction_Enzyme", da.HIRestrictionEnzyme));
+                        cmd.Parameters.Add(new SqlParameter("@PCR_Cycles", da.HIPCRCycles));
                     }
                     else if (da.SampleType == "RNA-Seq")
                     {
-                        cmd1.Parameters.Add(new SqlParameter("@Prep_Type", da.RNAPrepType));
-                        cmd1.Parameters.Add(new SqlParameter("@RIN", da.RNARIN));
+                        cmd.Parameters.Add(new SqlParameter("@Prep_Type", da.RNAPrepType));
+                        cmd.Parameters.Add(new SqlParameter("@RIN", da.RNARIN));
                     }
 
-                    cmd1.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
                     con.Close();//needed? 
                 }
                 catch (SqlException e)
