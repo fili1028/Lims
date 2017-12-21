@@ -24,7 +24,7 @@ namespace ConsoleApp1
             }
             return ret;
         }
-        public string GetSampleByID(int sampleID)
+        public List<string> GetSampleByID(int sampleID)
         {
             string sampleType = string.Empty;
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -53,7 +53,9 @@ namespace ConsoleApp1
                     Console.WriteLine(e.Message);
                 }
             }
-            return GetSampleWithSampleTypeAndId(sampleType, sampleID);
+            List<string> ret = new List<string>();
+            ret.Add(GetSampleWithSampleTypeAndId(sampleType, sampleID));
+            return ret;
         }
 
         private string GetStoredProcedureByParameter(string value, string spParameter)

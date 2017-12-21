@@ -17,7 +17,7 @@ namespace ConsoleApp1
             return databaseReader.GetSampleByValue(searchValue, spParameter);
         }
 
-        public string GetSampleByID(int sampleID)
+        public List<string> GetSampleByID(int sampleID)
         {
             return databaseReader.GetSampleByID(sampleID);
         }
