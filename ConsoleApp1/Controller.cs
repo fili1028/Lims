@@ -9,15 +9,20 @@ namespace ConsoleApp1
     public class Controller
     {
         DatabaseReader databaseReader = new DatabaseReader();
-        DataEntry dataEntry = new DataEntry();
+        SampleDataEntry dataEntry = new SampleDataEntry();
         
         //should we try to have DatabaseAttribute pass into the entry methods, instead of tons of variables
         
+        public void EnterData(SampleDataAttributes sampleDataAttributes)
+        {
+            dataEntry.EnterData(sampleDataAttributes);
+        }
+
         public void EnterDataForATAC(string genomeType, string cellType, string treatment,
             string condition, string comments, double concentration, double volume, string initials, string PIValue, 
             double pcrCycles, double transposaseUnit)
         {
-            dataEntry.EnterCommonData("ATAC-Seq", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
+            dataEntry.EnterSampleData("ATAC-Seq", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
                 string.Empty, string.Empty, string.Empty, pcrCycles, transposaseUnit);
         }
 
@@ -25,32 +30,29 @@ namespace ConsoleApp1
             string condition, string comments, double concentration, double volume, string initials, string PIValue,
             string antibody, string antibodyLot, string antibodyCatNr)
         {
-            dataEntry.EnterCommonData("ChIP-Seq", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
-                antibody, antibodyLot, antibodyCatNr, 0, 0);
+            dataEntry.EnterSampleData("ChIP-Seq", genomeType, cellType, treatment, condition, comments, concentration, 
+                                        volume, initials, PIValue, antibody, antibodyLot, antibodyCatNr, 0, 0);
         }
 
         public void EnterDataForHI(string genomeType, string cellType, string treatment,
             string condition, string comments, double concentration, double volume, string initials, string PIValue,
             double restrictionEnzyme, double pcrCycles)
         {
-            dataEntry.EnterCommonData("Hi-C", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
-                string.Empty, string.Empty, string.Empty, restrictionEnzyme, pcrCycles);
+            dataEntry.EnterSampleData("Hi-C", genomeType, cellType, treatment, condition, comments, concentration, 
+                volume, initials, PIValue, string.Empty, string.Empty, string.Empty, restrictionEnzyme, pcrCycles);
         }
 
         public void EnterDataForRNA(string genomeType, string cellType, string treatment,
             string condition, string comments, double concentration, double volume, string initials, string PIValue,
             string prepType, string rin)
         {
-            dataEntry.EnterCommonData("RNA-Seq", genomeType, cellType, treatment, condition, comments, concentration, volume, initials, PIValue,
-                prepType, rin, string.Empty, 0, 0);
+            dataEntry.EnterSampleData("RNA-Seq", genomeType, cellType, treatment, condition, comments, concentration, 
+                                        volume, initials, PIValue, prepType, rin, string.Empty, 0, 0);
         }
 
-        public List<string> GetSampleByValue(string value, string dbParameter)
+        public List<string> GetSampleByValue(string searchValue, string spParameter)
         {
-            //láta virka með list því ég þekki það, checka svo dictionary uppá að ná að halda 
-            //sampleID ef það er selectað í ListBox...ObservableCollection(?)
-
-            return databaseReader.GetSampleByValue(value, dbParameter);
+            return databaseReader.GetSampleByValue(searchValue, spParameter);
         }
 
         public string GetSampleByID(int sampleID)

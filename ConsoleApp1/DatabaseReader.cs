@@ -13,15 +13,14 @@ namespace ConsoleApp1
                 "Server=EALSQL1.eal.local; Database= DB2017_C08; User Id=USER_C08; Password=SesamLukOp_08";
 
         private List<string> SampleType = new List<string>();
-        
-        public List<string> GetSampleByValue(string value, string spParameter)
+        public List<string> GetSampleByValue(string searchValue, string spParameter)
         {
             List<string> ret = new List<string>();
-            string storedProcedure = GetStoredProcedureByParameter(value, spParameter);
-            List<int> sampleID = GetSampleTypeAndID(value, spParameter, storedProcedure);
+            string storedProcedure = GetStoredProcedureByParameter(searchValue, spParameter);
+            List<int> sampleID = GetSampleTypeAndID(searchValue, spParameter, storedProcedure);
             for (int i = 0; i < sampleID.Count; i++)
             {
-                ret.Add(GetSampleWithTypeAndId(SampleType[i], sampleID[i]));
+                ret.Add(GetSampleWithSampleTypeAndId(SampleType[i], sampleID[i]));
             }
             return ret;
         }
@@ -50,7 +49,7 @@ namespace ConsoleApp1
                     Console.WriteLine(e.Message);
                 }
             }
-            return GetSampleWithTypeAndId(sampleType, sampleID);
+            return GetSampleWithSampleTypeAndId(sampleType, sampleID);
         }
         private string GetStoredProcedureByParameter(string value, string spParameter)
         {
@@ -78,7 +77,7 @@ namespace ConsoleApp1
             }
             return storedProcedure;
         }
-        private List<int> GetSampleTypeAndID(string value, string spParameter, string storedProcedure)
+        private List<int> GetSampleTypeAndID(string searchValue, string spParameter, string storedProcedure)
         {
             List<int> sampleID = new List<int>();
             SampleType.Clear();
@@ -89,7 +88,7 @@ namespace ConsoleApp1
                     con.Open();
                     SqlCommand command = new SqlCommand(storedProcedure, con);
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add(new SqlParameter(spParameter, value));
+                    command.Parameters.Add(new SqlParameter(spParameter, searchValue));
 
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -113,7 +112,7 @@ namespace ConsoleApp1
             return sampleID;
         }
 
-        private string GetSampleWithTypeAndId(string sampleType, int sampleID)
+        private string GetSampleWithSampleTypeAndId(string sampleType, int sampleID)
         {
             string nl = "\n";
             string ret = string.Empty;
@@ -132,9 +131,8 @@ namespace ConsoleApp1
 
                     if (reader.HasRows)
                     {
-                        while (reader.Read())
+                        while (reader.Read()) //problem with getting wrong data when searching by value
                         {
-                            //string xampleType = reader["Sample_Type"].ToString();//probably not needed as the sampletype is imported as an arg through the method parameters
                             string GenomeType = reader["Genome_Type"].ToString();
                             string CellType = reader["Cell_Type"].ToString();
                             string Treatment = reader["Treatment"].ToString();

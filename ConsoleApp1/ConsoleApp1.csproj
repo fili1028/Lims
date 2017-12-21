@@ -52,14 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
-    <Compile Include="Database folder\ATAC-Seq.cs" />
-    <Compile Include="Database folder\ChIP-Seq.cs" />
-    <Compile Include="Database folder\DatabaseAttribute.cs" />
+    <Compile Include="SampleDataAttributes.cs" />
     <Compile Include="DatabaseReader.cs" />
-    <Compile Include="Database folder\Hi-C.cs" />
-    <Compile Include="Database folder\RNA-Seq.cs" />
     <Compile Include="DatabaseWriter.cs" />
-    <Compile Include="DataEntry.cs" />
+    <Compile Include="SampleDataEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

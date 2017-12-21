@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public class DatabaseAttribute
+    public class SampleDataAttributes
     {
-
-        //could probably get rid of rest of the classes in DatabaseFolder
-       
         public string SampleType { get; set; } 
         public string GenomeType { get; set; }
         public string CellType { get; set; }
@@ -27,7 +24,7 @@ namespace ConsoleApp1
         public double ATACPCRCycles { get; set; }
         // ChIP-Seq data
         public string ChIPAntibody { get; set; }
-        public string ChIPAtibodyLot { get; set; }
+        public string ChIPAntibodyLot { get; set; }
         public string ChIPAntibodyCatalogueNumber { get; set; }
         //Hi-C Data
         public double HIRestrictionEnzyme { get; set; }

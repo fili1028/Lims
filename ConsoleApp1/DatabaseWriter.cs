@@ -14,29 +14,37 @@ namespace ConsoleApp1
         private static string connectionString =
         "Server=EALSQL1.eal.local; Database= DB2017_C08; User Id=USER_C08; Password=SesamLukOp_08";
       
-        public void InsertSample(DatabaseAttribute da)
+        public void InsertSample(SampleDataAttributes da)
         {
-            using (SqlConnection con = new SqlConnection(connectionString)) //will we need to close the connection manully if we exit the connection without execution the query??
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand();
-                    if (da.SampleType == "ATAC-Seq") //change to switch/case
+                    switch (da.SampleType)
                     {
-                        cmd = new SqlCommand("spAddSample_ATAC_Seq", con);
-                    }
-                    else if (da.SampleType == "ChIP-Seq")
-                    {
-                        cmd = new SqlCommand("spAddSample_ChIP_Seq", con);
-                    }
-                    else if (da.SampleType == "Hi-C")
-                    {
-                        cmd = new SqlCommand("spAddSample_Hi_C", con);
-                    }
-                    if (da.SampleType == "RNA-Seq")
-                    {
-                        cmd = new SqlCommand("spAddSample_RNA_Seq", con);
+                        case "ATAC-Seq":
+                            cmd = new SqlCommand("spAddSample_ATAC_Seq", con);
+                            cmd.Parameters.Add(new SqlParameter("@Transposase_Unit", da.ATACTransposaseUnit));
+                            cmd.Parameters.Add(new SqlParameter("@PCR_Cycles", da.ATACPCRCycles));
+                            break;
+                        case "ChIP-Seq":
+                            cmd = new SqlCommand("spAddSample_ChIP_Seq", con);
+                            cmd.Parameters.Add(new SqlParameter("@Antibody", da.ChIPAntibody));
+                            cmd.Parameters.Add(new SqlParameter("@Antibody_Lot", da.ChIPAntibodyLot));
+                            cmd.Parameters.Add(new SqlParameter("@Antibody_Catalogue_Number", da.ChIPAntibodyCatalogueNumber));
+                            break;
+                        case "Hi-C":
+                            cmd = new SqlCommand("spAddSample_Hi_C", con);
+                            cmd.Parameters.Add(new SqlParameter("@Restriction_Enzyme", da.HIRestrictionEnzyme));
+                            cmd.Parameters.Add(new SqlParameter("@PCR_Cycles", da.HIPCRCycles));
+                            break;
+                        case "RNA-Seq":
+                            cmd = new SqlCommand("spAddSample_RNA_Seq", con);
+                            cmd.Parameters.Add(new SqlParameter("@Prep_Type", da.RNAPrepType));
+                            cmd.Parameters.Add(new SqlParameter("@RIN", da.RNARIN));
+                            break;
                     }
 
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -51,29 +59,7 @@ namespace ConsoleApp1
                     cmd.Parameters.Add(new SqlParameter("@Initials", da.Initials));
                     cmd.Parameters.Add(new SqlParameter("@PI_Value", da.PIValue));
                     cmd.Parameters.Add(new SqlParameter("@Date_Of_Addition", da.DateOfAddition));
-
-                    if (da.SampleType == "ATAC-Seq")
-                    {
-                        cmd.Parameters.Add(new SqlParameter("@Transposase_Unit", da.ATACTransposaseUnit));
-                        cmd.Parameters.Add(new SqlParameter("@PCR_Cycles", da.ATACPCRCycles));
-                    }
-                    else if (da.SampleType == "ChIP-Seq")
-                    {
-                        cmd.Parameters.Add(new SqlParameter("@Antibody", da.ChIPAntibody));
-                        cmd.Parameters.Add(new SqlParameter("@Antibody_Lot", da.ChIPAtibodyLot));
-                        cmd.Parameters.Add(new SqlParameter("@Antibody_Catalogue_Number", da.ChIPAntibodyCatalogueNumber));
-                    }
-                    else if (da.SampleType == "Hi-C")
-                    {
-                        cmd.Parameters.Add(new SqlParameter("@Restriction_Enzyme", da.HIRestrictionEnzyme));
-                        cmd.Parameters.Add(new SqlParameter("@PCR_Cycles", da.HIPCRCycles));
-                    }
-                    else if (da.SampleType == "RNA-Seq")
-                    {
-                        cmd.Parameters.Add(new SqlParameter("@Prep_Type", da.RNAPrepType));
-                        cmd.Parameters.Add(new SqlParameter("@RIN", da.RNARIN));
-                    }
-
+                    
                     cmd.ExecuteNonQuery();
                     con.Close();//needed? 
                 }
